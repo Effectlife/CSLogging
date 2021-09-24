@@ -10,6 +10,7 @@
 import CharacterSheet from "@/components/CharacterSheet";
 import api from "@/api/backend-api";
 import {AxiosError} from "axios";
+import { defineComponent } from 'vue';
 
 let interval: number;
 
@@ -17,7 +18,7 @@ interface State {
   characters: string[];
 }
 
-export default {
+export default defineComponent({
   name: 'CharacterSheets',
   props: {
     hellomsg: {
@@ -50,7 +51,7 @@ export default {
   }, beforeUnmount(): void {
     clearInterval(interval);
   },
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

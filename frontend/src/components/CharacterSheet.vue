@@ -45,6 +45,7 @@ th{
 
 import api from "@/api/backend-api";
 import {AxiosError} from "axios";
+import { defineComponent } from 'vue';
 
 let interval: number;
 
@@ -57,7 +58,7 @@ interface State {
   intelligence: number;
 }
 
-export default {
+export default defineComponent( {
   name: "CharacterSheet",
   props: {
     charName: {
@@ -98,6 +99,6 @@ export default {
   }, beforeUnmount(): void {
     clearInterval(interval);
   },
-}
+})
 </script>
 
