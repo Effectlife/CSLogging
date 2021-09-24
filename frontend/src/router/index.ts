@@ -1,12 +1,12 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Home from '../views/Home.vue'
 import Service from '../views/Service.vue'
-import Bootstrap from '../views/Bootstrap.vue'
+// import Bootstrap from '../views/Bootstrap.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {path: '/', component: Home},
     {path: '/callservice', component: Service},
-    {path: '/bootstrap', component: Bootstrap},
+    // {path: '/bootstrap', component: Bootstrap},
     // otherwise redirect to home
     {path: '/:pathMatch(.*)*', redirect: '/'}
 ]

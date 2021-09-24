@@ -1,9 +1,7 @@
 <template>
   <div class="service">
-    <h1>{{ msg }}</h1>
-    <h2>REST service call results</h2>
 
-    <button @click="callHelloApi()">CALL Spring Boot REST backend service</button>
+    <button @click="getCharacterNames()">Get Characters</button>
 
     <h4>Backend response: {{ backendResponse }}</h4>
 
@@ -11,36 +9,44 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 import api from "../api/backend-api";
 import {AxiosError} from "axios";
 
 interface State {
-  msg: string;
   backendResponse: string;
+  characterNames: string[];
   errors: AxiosError[]
 }
 
+let interval: number;
+
 export default defineComponent({
   name: 'Service',
-
+  mounted() {
+    console.log("mounted");
+    interval = setInterval(this.getCharacterNames, 1000);
+  },
   data: (): State => {
     return {
-      msg: 'HowTo call REST-Services:',
       backendResponse: '',
+      characterNames: [],
       errors: []
     }
   },
+  beforeUnmount() {
+    clearInterval(interval);
+  },
   methods: {
     // Fetches posts when the component is created.
-    callHelloApi () {
-      api.hello().then(response => {
-          this.backendResponse = response.data;
-          console.log(response.data)
+    getCharacterNames() {
+      api.getAllNames().then(response => {
+        this.backendResponse = response.data.toString();
+        console.log(response.data)
       })
-      .catch((error: AxiosError) => {
-        this.errors.push(error)
-      })
+          .catch((error: AxiosError) => {
+            this.errors.push(error)
+          })
     }
   }
 });
@@ -49,21 +55,21 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
+h1, h2 {
+  font-weight: normal;
+}
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
 
-  a {
-    color: #42b983;
-  }
+a {
+  color: #42b983;
+}
 </style>
