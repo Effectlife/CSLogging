@@ -74,16 +74,17 @@ export default defineComponent( {
     // Fetches posts when the component is created.
     getCharacter(): void {
       api.getCharacter(this.charName).then(response => {
-        this.$data.charisma = response.data.charisma;
-        this.$data.constitution = response.data.constitution;
-        this.$data.dexterity = response.data.dexterity;
-        this.$data.strength = response.data.strength;
-        this.$data.wisdom = response.data.wisdom;
-        this.$data.intelligence = response.data.intelligence;
-        console.log(response.data);
+        let data: any = response.data;
+        this.$data.charisma = data.charisma;
+        this.$data.constitution = data.constitution;
+        this.$data.dexterity = data.dexterity;
+        this.$data.strength = data.strength;
+        this.$data.wisdom = data.wisdom;
+        this.$data.intelligence = data.intelligence;
+        console.log(data);
       })
           .catch((error: AxiosError) => {
-            this.errors.push(error)
+            console.log(error)
           })
     }
   },

@@ -7,15 +7,15 @@
 </template>
 
 <script lang="ts">
-import CharacterSheet from "@/components/CharacterSheet";
+import CharacterSheet from "@/components/CharacterSheet.vue";
 import api from "@/api/backend-api";
 import {AxiosError} from "axios";
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 let interval: number;
 
 interface State {
-  characters: string[];
+  characters:any;
 }
 
 export default defineComponent({
@@ -41,7 +41,7 @@ export default defineComponent({
         console.log(this.characters);
       })
           .catch((error: AxiosError) => {
-            this.errors.push(error)
+            console.log(error)
           })
     }
   }, data: (): State => {
