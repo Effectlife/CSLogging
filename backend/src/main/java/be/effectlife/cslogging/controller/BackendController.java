@@ -1,5 +1,6 @@
 package be.effectlife.cslogging.controller;
 
+import be.effectlife.cslogging.models.WebCharacter;
 import be.effectlife.cslogging.services.CharacterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,7 @@ public class BackendController {
     @ResponseBody
     @GetMapping(path = "/getCharacter")
     public ResponseEntity<?> getCharacter(@RequestParam String characterId) {
-        Character character = characterService.get(characterId);
+        WebCharacter character = characterService.get(characterId);
         if (character == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Character with id " + characterId + " does not exist");
         return ResponseEntity.ok(character);
@@ -47,8 +48,14 @@ public class BackendController {
 
     @ResponseBody
     @GetMapping(path = "/getAllNames")
-    public Set<String> getAllNames() {
-        return characterService.getAllNames;
+    public List<String> getAllNames() {
+        return characterService.getAllIds();
+    }
+
+    @ResponseBody
+    @GetMapping(path = "/getAllCharacters")
+    public List<WebCharacter> getAllCharacters(){
+        return characterService.getAllCharacters();
     }
 
 }
