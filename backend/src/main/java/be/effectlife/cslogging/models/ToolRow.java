@@ -8,15 +8,15 @@ public class ToolRow {
 
     private String toolName;
     private String toolAttr;
-    private String toolBonus;
+    private String toolBonusDisplay;
 
     public ToolRow() {
     }
 
-    public ToolRow(String toolName, String toolAttr, String toolBonus) {
+    public ToolRow(String toolName, String toolAttr, String toolBonusDisplay) {
         this.toolName = toolName;
         this.toolAttr = toolAttr;
-        this.toolBonus = toolBonus;
+        this.toolBonusDisplay = toolBonusDisplay;
     }
 
     public String getToolName() {
@@ -35,11 +35,11 @@ public class ToolRow {
         this.toolAttr = toolAttr;
     }
 
-    public String getToolBonus() {
-        return toolBonus;
+    public String getToolBonusDisplay() {
+        return toolBonusDisplay;
     }
 
-    public void setToolBonus(String toolBonus) {
-        this.toolBonus = toolBonus;
+    public void setToolBonusDisplay(String toolBonusDisplay) {
+        this.toolBonusDisplay = toolBonusDisplay;
     }
 }

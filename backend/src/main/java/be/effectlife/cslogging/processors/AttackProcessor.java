@@ -12,12 +12,12 @@ public class AttackProcessor implements Processor {
 
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
-        final Map<String, Map<String, Map<String, String>>> attackRows = (Map<String, Map<String, Map<String, String>>>) input.get("attackRows");
-        final ArrayList<String> attackRowIds = (ArrayList<String>) input.get("attackRowIds");
+        final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("atr");
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("atid");
 
         ArrayList<AttackRow> rows = new ArrayList<>();
-        for (String attackRowId : attackRowIds) {
-            rows.add(processRow(attackRows.get(attackRowId)));
+        for (String rowId : rowIds) {
+            rows.add(processRow(rowList.get(rowId)));
         }
         webCharacter.setAttackRows(rows);
     }
@@ -25,18 +25,12 @@ public class AttackProcessor implements Processor {
     private AttackRow processRow(Map<String, Map<String, String>> stringMapMap) {
 
         AttackRow attackRow = new AttackRow();
-        final Map<String, String> atkname = stringMapMap.get("atkname");
-        if (atkname != null) attackRow.setAtkName(atkname.get("current"));
-        final Map<String, String> atkbonus = stringMapMap.get("atkbonus");
-        if (atkbonus != null) attackRow.setAtkBonus(atkbonus.get("current"));
-        final Map<String, String> saveeffect = stringMapMap.get("saveeffect");
-        if (saveeffect != null) attackRow.setSaveEffect(saveeffect.get("current"));
-        final Map<String, String> atkdesc = stringMapMap.get("atk_desc");
-        if (atkdesc != null) attackRow.setAtkDesc(atkdesc.get("current"));
-        final Map<String, String> atkrange = stringMapMap.get("atkrange");
-        if (atkrange != null) attackRow.setAtkRange(atkrange.get("current"));
-        final Map<String, String> atkdmgtype = stringMapMap.get("atkdmgtype");
-        if (atkdmgtype != null) attackRow.setAtkDmgType(atkdmgtype.get("current"));
+        attackRow.setAtkName(getRowValue(stringMapMap, "atkname"));
+        attackRow.setAtkBonus(getRowValue(stringMapMap, "atkbonus"));
+        attackRow.setSaveEffect(getRowValue(stringMapMap, "saveeffect"));
+        attackRow.setAtkDesc(getRowValue(stringMapMap, "atk_desc"));
+        attackRow.setAtkRange(getRowValue(stringMapMap, "atkrange"));
+        attackRow.setAtkDmgType(getRowValue(stringMapMap, "atkdmgtype"));
         return attackRow;
 
     }

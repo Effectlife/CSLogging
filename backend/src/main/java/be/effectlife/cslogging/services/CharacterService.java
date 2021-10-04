@@ -2,6 +2,7 @@ package be.effectlife.cslogging.services;
 
 import be.effectlife.cslogging.models.WebCharacter;
 import be.effectlife.cslogging.processors.*;
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,34 @@ public class CharacterService {
     @Autowired
     private AttackProcessor attackProcessor;
 
+    @Autowired
+    private ProficienciesProcessor proficienciesProcessor;
+
+    @Autowired
+    private ClassResourceProcessor classResourceProcessor;
+
+    @Autowired
+    private DamageModProcessor damageModProcessor;
+
+    @Autowired
+    private InventoryProcessor inventoryProcessor;
+    @Autowired
+    private ToolProcessor toolProcessor;
+    @Autowired
+    private TraitsProcessor traitsProcessor;
     @PostConstruct
     public void listify() {
         processors.add(statsProcessor);
         processors.add(skillsProcessor);
         processors.add(basicsProcessor);
         processors.add(attackProcessor);
+        processors.add(proficienciesProcessor);
+        processors.add(classResourceProcessor);
+        processors.add(damageModProcessor);
+        processors.add(inventoryProcessor);
+        processors.add(toolProcessor);
+        processors.add(traitsProcessor);
+
     }
 
     public List<WebCharacter> getAllCharacters() {

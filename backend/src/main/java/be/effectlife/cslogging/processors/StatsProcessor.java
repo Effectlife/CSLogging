@@ -3,6 +3,7 @@ package be.effectlife.cslogging.processors;
 import be.effectlife.cslogging.models.WebCharacter;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -10,29 +11,36 @@ public class StatsProcessor implements Processor {
 
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
-        webCharacter.setStrength(input.get("strength").toString());
-        webCharacter.setStrengthMod(input.get("strength_mod").toString());
-        webCharacter.setDexterity(input.get("dexterity").toString());
-        webCharacter.setConstitution(input.get("constitution").toString());
-        webCharacter.setConstitution_mod(input.get("constitution_mod").toString());
-        webCharacter.setWisdom(input.get("wisdom").toString());
-        webCharacter.setWisdom_mod(input.get("wisdom_mod").toString());
-        webCharacter.setCharisma(input.get("charisma").toString());
-        webCharacter.setCharisma_mod(input.get("charisma_mod").toString());
-        webCharacter.setIntelligence(input.get("intelligence").toString());
-        webCharacter.setIntelligence_mod(input.get("intelligence_mod").toString());
+        Map<String, String> data = new HashMap<>();
+        input.forEach((k, v) -> {
+            String val = "";
+            if (v != null) val = v.toString();
+            data.put(k, val);
+        });
+        webCharacter.setStrength(data.get("str"));
+        webCharacter.setStrength_mod(data.get("strm"));
+        webCharacter.setDexterity(data.get("dex"));
+        webCharacter.setDexterity_mod(data.get("dexm"));
+        webCharacter.setConstitution(data.get("con"));
+        webCharacter.setConstitution_mod(data.get("conm"));
+        webCharacter.setWisdom(data.get("wis"));
+        webCharacter.setWisdom_mod(data.get("wism"));
+        webCharacter.setCharisma(data.get("cha"));
+        webCharacter.setCharisma_mod(data.get("cham"));
+        webCharacter.setIntelligence(data.get("int"));
+        webCharacter.setIntelligence_mod(data.get("intm"));
 
-        webCharacter.setStrength_save_bonus(input.get("strength_save_bonus").toString());
-        webCharacter.setStrength_save_prof(bool(input, "strength_save_prof"));
-        webCharacter.setDexterity_save_bonus(input.get("dexterity_save_bonus").toString());
-        webCharacter.setDexterity_save_prof(bool(input, "dexterity_save_prof"));
-        webCharacter.setConstitution_save_bonus(input.get("constitution_save_bonus").toString());
-        webCharacter.setConstitution_save_prof(bool(input, "constitution_save_prof"));
-        webCharacter.setIntelligence_save_bonus(input.get("intelligence_save_bonus").toString());
-        webCharacter.setIntelligence_save_prof(bool(input, "intelligence_save_prof"));
-        webCharacter.setWisdom_save_bonus(input.get("wisdom_save_bonus").toString());
-        webCharacter.setWisdom_save_prof(bool(input, "wisdom_save_prof"));
-        webCharacter.setCharisma_save_bonus(input.get("charisma_save_bonus").toString());
-        webCharacter.setCharisma_save_prof(bool(input, "charisma_save_prof"));
+        webCharacter.setStrength_save_bonus(data.get("strsb"));
+        webCharacter.setStrength_save_prof(bool(data, "strsp"));
+        webCharacter.setDexterity_save_bonus(data.get("dexsb"));
+        webCharacter.setDexterity_save_prof(bool(data, "dexsp"));
+        webCharacter.setConstitution_save_bonus(data.get("consb"));
+        webCharacter.setConstitution_save_prof(bool(data, "consp"));
+        webCharacter.setIntelligence_save_bonus(data.get("intsb"));
+        webCharacter.setIntelligence_save_prof(bool(data, "intsp"));
+        webCharacter.setWisdom_save_bonus(data.get("wissb"));
+        webCharacter.setWisdom_save_prof(bool(data, "wissp"));
+        webCharacter.setCharisma_save_bonus(data.get("chasb"));
+        webCharacter.setCharisma_save_prof(bool(data, "chasp"));
     }
 }

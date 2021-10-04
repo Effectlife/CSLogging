@@ -1,8 +1,7 @@
 <template>
-  <div class="hello">
-    <div ref="sheets">
-      <CharacterSheet :id="char" v-for="char in characters" :key="char" v-bind:char-name="char" style="display: block"/>
-    </div>
+    <div class="container">
+      <CharacterSheet :id="char" v-for="char in characters" :key="char" v-bind:char-id="char"
+                      style="display: block"/>
   </div>
 </template>
 
@@ -15,23 +14,17 @@ import {defineComponent} from 'vue';
 let interval: number;
 
 interface State {
-  characters:any;
+  characters: any;
 }
 
 export default defineComponent({
   name: 'CharacterSheets',
-  props: {
-    hellomsg: {
-      type: String,
-      required: false
-    }
-  },
   components: {
     CharacterSheet
   },
   mounted(): void {
     this.getCharacterNames();
-    interval = setInterval(this.getCharacterNames, 1000);
+    interval = setInterval(this.getCharacterNames, 5000);
   },
   methods: {
     // Fetches posts when the component is created.

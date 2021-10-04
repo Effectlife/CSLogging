@@ -5,40 +5,58 @@ import org.slf4j.LoggerFactory;
 
 public class ClassResourceRow {
     private static final Logger LOG = LoggerFactory.getLogger(ClassResourceRow.class);
-    private String name;
-    private int value;
-    private int max;
-
-    public ClassResourceRow() {
+    private String nameLeft;
+    private String nameRight;
+    private String valueLeft;
+    private String valueRight;
+    private String maxLeft;
+    private String maxRight;
+    
+    public String getNameLeft() {
+        return nameLeft;
     }
 
-    public ClassResourceRow(String name, int value, int max) {
-        this.name = name;
-        this.value = value;
-        this.max = max;
+    public void setNameLeft(String nameLeft) {
+        this.nameLeft = nameLeft;
     }
 
-    public String getName() {
-        return name;
+    public String getNameRight() {
+        return nameRight;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameRight(String nameRight) {
+        this.nameRight = nameRight;
     }
 
-    public int getValue() {
-        return value;
+    public String getValueLeft() {
+        return valueLeft;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setValueLeft(String valueLeft) {
+        this.valueLeft = valueLeft;
     }
 
-    public int getMax() {
-        return max;
+    public String getValueRight() {
+        return valueRight;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    public void setValueRight(String valueRight) {
+        this.valueRight = valueRight;
+    }
+
+    public String getMaxLeft() {
+        return maxLeft;
+    }
+
+    public void setMaxLeft(String maxLeft) {
+        this.maxLeft = maxLeft;
+    }
+
+    public String getMaxRight() {
+        return maxRight;
+    }
+
+    public void setMaxRight(String maxRight) {
+        this.maxRight = maxRight;
     }
 }

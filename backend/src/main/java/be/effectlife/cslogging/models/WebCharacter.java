@@ -19,8 +19,13 @@ public class WebCharacter {
     private String hp_temp;
     private String hit_dice;
     private String hit_dice_max;
-    private String deathSaveFails;
-    private String deathSaveSuccesses;
+    private String hit_dice_roll;
+    private boolean deathSaveFail1;
+    private boolean deathSaveFail2;
+    private boolean deathSaveFail3;
+    private boolean deathSaveSuccess1;
+    private boolean deathSaveSuccess2;
+    private boolean deathSaveSuccess3;
 
     //Money
     private String cp;//Copper Pieces
@@ -43,6 +48,20 @@ public class WebCharacter {
     private String eyes;
     private String skin;
     private String hair;
+
+    private String classDisplay;
+    private String background;
+    private String raceDisplay;
+    private String alignment;
+    private String experience;
+    private String passiveWisdom;
+
+    private String classResourceMax;
+    private String otherResourceMax;
+    private String classResource;
+    private String otherResource;
+    private String classResourceName;
+    private String otherResourceName;
 
     //Rows
     private List<AttackRow> attackRows;
@@ -125,6 +144,62 @@ public class WebCharacter {
     private String survival_bonus;
     private boolean survival_prof;
 
+    public String getClassResourceMax() {
+        return classResourceMax;
+    }
+
+    public void setClassResourceMax(String classResourceMax) {
+        this.classResourceMax = classResourceMax;
+    }
+
+    public String getOtherResourceMax() {
+        return otherResourceMax;
+    }
+
+    public void setOtherResourceMax(String otherResourceMax) {
+        this.otherResourceMax = otherResourceMax;
+    }
+
+    public String getClassResource() {
+        return classResource;
+    }
+
+    public void setClassResource(String classResource) {
+        this.classResource = classResource;
+    }
+
+    public String getOtherResource() {
+        return otherResource;
+    }
+
+    public void setOtherResource(String otherResource) {
+        this.otherResource = otherResource;
+    }
+
+    public String getClassResourceName() {
+        return classResourceName;
+    }
+
+    public void setClassResourceName(String classResourceName) {
+        this.classResourceName = classResourceName;
+    }
+
+    public String getOtherResourceName() {
+        return otherResourceName;
+    }
+
+    public void setOtherResourceName(String otherResourceName) {
+        this.otherResourceName = otherResourceName;
+    }
+
+    public String getPassiveWisdom() {
+        return passiveWisdom;
+    }
+
+    public void setPassiveWisdom(String passiveWisdom) {
+        this.passiveWisdom = passiveWisdom;
+    }
+
     public String getId() {
         return id;
     }
@@ -205,20 +280,60 @@ public class WebCharacter {
         this.hit_dice_max = hit_dice_max;
     }
 
-    public String getDeathSaveFails() {
-        return deathSaveFails;
+    public String getHit_dice_roll() {
+        return hit_dice_roll;
     }
 
-    public void setDeathSaveFails(String deathSaveFails) {
-        this.deathSaveFails = deathSaveFails;
+    public void setHit_dice_roll(String hit_dice_roll) {
+        this.hit_dice_roll = hit_dice_roll;
     }
 
-    public String getDeathSaveSuccesses() {
-        return deathSaveSuccesses;
+    public boolean isDeathSaveFail1() {
+        return deathSaveFail1;
     }
 
-    public void setDeathSaveSuccesses(String deathSaveSuccesses) {
-        this.deathSaveSuccesses = deathSaveSuccesses;
+    public void setDeathSaveFail1(boolean deathSaveFail1) {
+        this.deathSaveFail1 = deathSaveFail1;
+    }
+
+    public boolean isDeathSaveFail2() {
+        return deathSaveFail2;
+    }
+
+    public void setDeathSaveFail2(boolean deathSaveFail2) {
+        this.deathSaveFail2 = deathSaveFail2;
+    }
+
+    public boolean isDeathSaveFail3() {
+        return deathSaveFail3;
+    }
+
+    public void setDeathSaveFail3(boolean deathSaveFail3) {
+        this.deathSaveFail3 = deathSaveFail3;
+    }
+
+    public boolean isDeathSaveSuccess1() {
+        return deathSaveSuccess1;
+    }
+
+    public void setDeathSaveSuccess1(boolean deathSaveSuccess1) {
+        this.deathSaveSuccess1 = deathSaveSuccess1;
+    }
+
+    public boolean isDeathSaveSuccess2() {
+        return deathSaveSuccess2;
+    }
+
+    public void setDeathSaveSuccess2(boolean deathSaveSuccess2) {
+        this.deathSaveSuccess2 = deathSaveSuccess2;
+    }
+
+    public boolean isDeathSaveSuccess3() {
+        return deathSaveSuccess3;
+    }
+
+    public void setDeathSaveSuccess3(boolean deathSaveSuccess3) {
+        this.deathSaveSuccess3 = deathSaveSuccess3;
     }
 
     public String getCp() {
@@ -349,6 +464,46 @@ public class WebCharacter {
         this.hair = hair;
     }
 
+    public String getClassDisplay() {
+        return classDisplay;
+    }
+
+    public void setClassDisplay(String classDisplay) {
+        this.classDisplay = classDisplay;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public String getRaceDisplay() {
+        return raceDisplay;
+    }
+
+    public void setRaceDisplay(String raceDisplay) {
+        this.raceDisplay = raceDisplay;
+    }
+
+    public String getAlignment() {
+        return alignment;
+    }
+
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
     public List<AttackRow> getAttackRows() {
         return attackRows;
     }
@@ -417,7 +572,7 @@ public class WebCharacter {
         return strength_mod;
     }
 
-    public void setStrengthMod(String strength_mod) {
+    public void setStrength_mod(String strength_mod) {
         this.strength_mod = strength_mod;
     }
 
