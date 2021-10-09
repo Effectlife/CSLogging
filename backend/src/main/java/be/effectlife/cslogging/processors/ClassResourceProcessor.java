@@ -14,26 +14,32 @@ public class ClassResourceProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("rer");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("reid");
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("reid"); if(rowIds == null)return;
         Map<String, String> data = new HashMap<>();
         input.forEach((k, v) -> {
             String val = "";
             if (v != null) val = v.toString();
             data.put(k, val);
         });
-
-        webCharacter.setClassResource(data.get("cr"));
-        webCharacter.setOtherResource(data.get("or"));
-        webCharacter.setClassResourceName(data.get("crn"));
-        webCharacter.setOtherResourceName(data.get("orn"));
-        webCharacter.setClassResourceMax(data.get("crm"));
-        webCharacter.setOtherResourceMax(data.get("orm"));
-
         ArrayList<ClassResourceRow> rows = new ArrayList<>();
+
+        rows.add(createRow(data.get("cr"), data.get("or"), data.get("crn"), data.get("orn"), data.get("crm"), data.get("orm")));
+
         for (String rowId : rowIds) {
             rows.add(processRow(rowList.get(rowId)));
         }
         webCharacter.setClassResourceRows(rows);
+    }
+
+    private ClassResourceRow createRow(String cr, String or, String crn, String orn, String crm, String orm) {
+        ClassResourceRow classResourceRow = new ClassResourceRow();
+        classResourceRow.setNameLeft(crn);
+        classResourceRow.setNameRight(orn);
+        classResourceRow.setMaxLeft(crm);
+        classResourceRow.setMaxRight(orm);
+        classResourceRow.setValueLeft(cr);
+        classResourceRow.setValueRight(or);
+        return classResourceRow;
     }
 
     private ClassResourceRow processRow(Map<String, Map<String, String>> stringMapMap) {
@@ -43,8 +49,8 @@ public class ClassResourceProcessor implements Processor {
         classResourceRow.setNameRight(getValue(stringMapMap, "resource_right_name", "current"));
         classResourceRow.setMaxLeft(getValue(stringMapMap, "resource_left", "max"));
         classResourceRow.setMaxRight(getValue(stringMapMap, "resource_right", "max"));
-        classResourceRow.setMaxLeft(getValue(stringMapMap, "resource_left", "current"));
-        classResourceRow.setMaxRight(getValue(stringMapMap, "resource_right", "current"));
+        classResourceRow.setValueLeft(getValue(stringMapMap, "resource_left", "current"));
+        classResourceRow.setValueRight(getValue(stringMapMap, "resource_right", "current"));
         return classResourceRow;
 
     }

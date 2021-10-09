@@ -13,8 +13,8 @@ public class AttackProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("atr");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("atid");
-
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("atid"); if(rowIds == null)return;
+        
         ArrayList<AttackRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {
             rows.add(processRow(rowList.get(rowId)));

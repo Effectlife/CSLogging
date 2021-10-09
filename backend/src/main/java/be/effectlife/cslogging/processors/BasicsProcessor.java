@@ -1,9 +1,11 @@
 package be.effectlife.cslogging.processors;
 
 import be.effectlife.cslogging.models.WebCharacter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 @Component
@@ -33,12 +35,22 @@ public class BasicsProcessor implements Processor {
         webCharacter.setGp(data.get("gp"));
         webCharacter.setPp(data.get("pp"));
 
-        webCharacter.setClassDisplay(data.get("cldi"));
-        webCharacter.setBackground(data.get("back"));
-        webCharacter.setRaceDisplay(data.get("rcdi"));
-        webCharacter.setAlignment(data.get("alig"));
-        webCharacter.setExperience(data.get("exp"));
-        webCharacter.setPassiveWisdom(data.get("pw"));
+        webCharacter.setCharacterAppearance(multiLineReplace(webCharacter, data.get("ca")));
+        webCharacter.setBackstory(multiLineReplace(webCharacter, data.get("cb")));
+        webCharacter.setAlliesAndOrganisations(multiLineReplace(webCharacter, data.get("ao")));
+        webCharacter.setAdditionalFeatureAndTraits(multiLineReplace(webCharacter, data.get("aft")));
+        webCharacter.setTreasure(multiLineReplace(webCharacter, data.get("tre")));
+        webCharacter.setPersonalityTraits(multiLineReplace(webCharacter, data.get("pt")));
+        webCharacter.setBonds(multiLineReplace(webCharacter, data.get("bo")));
+        webCharacter.setFlaws(multiLineReplace(webCharacter, data.get("fl")));
+        webCharacter.setIdeals(multiLineReplace(webCharacter, data.get("ide")));
+
+        webCharacter.setClassDisplay(multiLineReplace(webCharacter, data.get("cldi")));
+        webCharacter.setBackground(multiLineReplace(webCharacter, data.get("back")));
+        webCharacter.setRaceDisplay(multiLineReplace(webCharacter, data.get("rcdi")));
+        webCharacter.setAlignment(multiLineReplace(webCharacter, data.get("alig")));
+        webCharacter.setExperience(multiLineReplace(webCharacter, data.get("exp")));
+        webCharacter.setPassiveWisdom(multiLineReplace(webCharacter, data.get("pw")));
 
         webCharacter.setDeathSaveSuccess1(bool(data, "dss1"));
         webCharacter.setDeathSaveSuccess2(bool(data, "dss2"));
@@ -46,5 +58,52 @@ public class BasicsProcessor implements Processor {
         webCharacter.setDeathSaveFail1(bool(data, "dsf1"));
         webCharacter.setDeathSaveFail2(bool(data, "dsf2"));
         webCharacter.setDeathSaveFail3(bool(data, "dsf3"));
+
+        webCharacter.setAge(data.get("ag"));
+        webCharacter.setSize(data.get("sz"));
+        webCharacter.setHeight(data.get("he"));
+        webCharacter.setWeight(data.get("we"));
+        webCharacter.setEyes(data.get("ey"));
+        webCharacter.setSkin(data.get("sk"));
+        webCharacter.setHair(data.get("ha"));
+
+        webCharacter.setSpellCastingAbility(getSCA(data));
+        webCharacter.setSpellAttackBonus(data.get("sab"));
+        webCharacter.setSpellSaveDC(data.get("ssdc"));
+
+
+        webCharacter.setL1t(data.get("l1t"));
+        webCharacter.setL2t(data.get("l2t"));
+        webCharacter.setL3t(data.get("l3t"));
+        webCharacter.setL4t(data.get("l4t"));
+        webCharacter.setL5t(data.get("l5t"));
+        webCharacter.setL6t(data.get("l6t"));
+        webCharacter.setL7t(data.get("l7t"));
+        webCharacter.setL8t(data.get("l8t"));
+        webCharacter.setL9t(data.get("l9t"));
+
+        webCharacter.setL1e(data.get("l1e"));
+        webCharacter.setL2e(data.get("l2e"));
+        webCharacter.setL3e(data.get("l3e"));
+        webCharacter.setL4e(data.get("l4e"));
+        webCharacter.setL5e(data.get("l5e"));
+        webCharacter.setL6e(data.get("l6e"));
+        webCharacter.setL7e(data.get("l7e"));
+        webCharacter.setL8e(data.get("l8e"));
+        webCharacter.setL9e(data.get("l9e"));
+    }
+
+    private String getSCA(Map<String, String> data) {
+        String spab = data.get("spab");
+        if (StringUtils.isNotBlank(spab)) {
+            spab = spab.toUpperCase(Locale.ROOT);
+            if (spab.contains("STRENGTH")) return "STRENGTH";
+            if (spab.contains("DEXTERITY")) return "DEXTERITY";
+            if (spab.contains("CONSTITUTION")) return "CONSTITUTION";
+            if (spab.contains("INTELLIGENCE")) return "INTELLIGENCE";
+            if (spab.contains("WISDOM")) return "WISDOM";
+            if (spab.contains("CHARISMA")) return "CHARISMA";
+        }
+        return "NONE";
     }
 }

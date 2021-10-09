@@ -13,7 +13,7 @@ public class ProficienciesProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("prr");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("prid");
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("prid"); if(rowIds == null)return;
 
         ArrayList<ProficiencyRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {

@@ -1,5 +1,6 @@
 package be.effectlife.cslogging.models;
 
+import be.effectlife.cslogging.models.spells.SpellRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +41,11 @@ public class WebCharacter {
     private String alliesAndOrganisations;
     private String additionalFeatureAndTraits;
     private String treasure;
+    private String backstory;
+    private String personalityTraits;
+    private String bonds;
+    private String flaws;
+    private String ideals;
 
     private String age;
     private String size;
@@ -56,12 +62,7 @@ public class WebCharacter {
     private String experience;
     private String passiveWisdom;
 
-    private String classResourceMax;
-    private String otherResourceMax;
-    private String classResource;
-    private String otherResource;
-    private String classResourceName;
-    private String otherResourceName;
+    private String totalWeight;
 
     //Rows
     private List<AttackRow> attackRows;
@@ -72,6 +73,16 @@ public class WebCharacter {
     private List<ToolRow> toolRows;
     private List<ClassResourceRow> classResourceRows;
     private List<DamageModRow> damageModRows;
+    private List<SpellRow> cantripRows;
+    private List<SpellRow> s1Rows;
+    private List<SpellRow> s2Rows;
+    private List<SpellRow> s3Rows;
+    private List<SpellRow> s4Rows;
+    private List<SpellRow> s5Rows;
+    private List<SpellRow> s6Rows;
+    private List<SpellRow> s7Rows;
+    private List<SpellRow> s8Rows;
+    private List<SpellRow> s9Rows;
 
 
     //basic stats
@@ -144,52 +155,324 @@ public class WebCharacter {
     private String survival_bonus;
     private boolean survival_prof;
 
-    public String getClassResourceMax() {
-        return classResourceMax;
+    private String spellCastingAbility;
+    private String spellSaveDC;
+    private String spellAttackBonus;
+
+
+    private String L1t;
+    private String L2t;
+    private String L3t;
+    private String L4t;
+    private String L5t;
+    private String L6t;
+    private String L7t;
+    private String L8t;
+    private String L9t;
+    private String L1e;
+    private String L2e;
+    private String L3e;
+    private String L4e;
+    private String L5e;
+    private String L6e;
+    private String L7e;
+    private String L8e;
+    private String L9e;
+
+    public String getL1t() {
+        return L1t;
     }
 
-    public void setClassResourceMax(String classResourceMax) {
-        this.classResourceMax = classResourceMax;
+    public void setL1t(String l1t) {
+        L1t = l1t;
     }
 
-    public String getOtherResourceMax() {
-        return otherResourceMax;
+    public String getL2t() {
+        return L2t;
     }
 
-    public void setOtherResourceMax(String otherResourceMax) {
-        this.otherResourceMax = otherResourceMax;
+    public void setL2t(String l2t) {
+        L2t = l2t;
     }
 
-    public String getClassResource() {
-        return classResource;
+    public String getL3t() {
+        return L3t;
     }
 
-    public void setClassResource(String classResource) {
-        this.classResource = classResource;
+    public void setL3t(String l3t) {
+        L3t = l3t;
     }
 
-    public String getOtherResource() {
-        return otherResource;
+    public String getL4t() {
+        return L4t;
     }
 
-    public void setOtherResource(String otherResource) {
-        this.otherResource = otherResource;
+    public void setL4t(String l4t) {
+        L4t = l4t;
     }
 
-    public String getClassResourceName() {
-        return classResourceName;
+    public String getL5t() {
+        return L5t;
     }
 
-    public void setClassResourceName(String classResourceName) {
-        this.classResourceName = classResourceName;
+    public void setL5t(String l5t) {
+        L5t = l5t;
     }
 
-    public String getOtherResourceName() {
-        return otherResourceName;
+    public String getL6t() {
+        return L6t;
     }
 
-    public void setOtherResourceName(String otherResourceName) {
-        this.otherResourceName = otherResourceName;
+    public void setL6t(String l6t) {
+        L6t = l6t;
+    }
+
+    public String getL7t() {
+        return L7t;
+    }
+
+    public void setL7t(String l7t) {
+        L7t = l7t;
+    }
+
+    public String getL8t() {
+        return L8t;
+    }
+
+    public void setL8t(String l8t) {
+        L8t = l8t;
+    }
+
+    public String getL9t() {
+        return L9t;
+    }
+
+    public void setL9t(String l9t) {
+        L9t = l9t;
+    }
+
+    public String getL1e() {
+        return L1e;
+    }
+
+    public void setL1e(String l1e) {
+        L1e = l1e;
+    }
+
+    public String getL2e() {
+        return L2e;
+    }
+
+    public void setL2e(String l2e) {
+        L2e = l2e;
+    }
+
+    public String getL3e() {
+        return L3e;
+    }
+
+    public void setL3e(String l3e) {
+        L3e = l3e;
+    }
+
+    public String getL4e() {
+        return L4e;
+    }
+
+    public void setL4e(String l4e) {
+        L4e = l4e;
+    }
+
+    public String getL5e() {
+        return L5e;
+    }
+
+    public void setL5e(String l5e) {
+        L5e = l5e;
+    }
+
+    public String getL6e() {
+        return L6e;
+    }
+
+    public void setL6e(String l6e) {
+        L6e = l6e;
+    }
+
+    public String getL7e() {
+        return L7e;
+    }
+
+    public void setL7e(String l7e) {
+        L7e = l7e;
+    }
+
+    public String getL8e() {
+        return L8e;
+    }
+
+    public void setL8e(String l8e) {
+        L8e = l8e;
+    }
+
+    public String getL9e() {
+        return L9e;
+    }
+
+    public void setL9e(String l9e) {
+        L9e = l9e;
+    }
+
+    public String getSpellCastingAbility() {
+        return spellCastingAbility;
+    }
+
+    public void setSpellCastingAbility(String spellCastingAbility) {
+        this.spellCastingAbility = spellCastingAbility;
+    }
+
+    public String getSpellSaveDC() {
+        return spellSaveDC;
+    }
+
+    public List<SpellRow> getCantripRows() {
+        return cantripRows;
+    }
+
+    public void setCantripRows(List<SpellRow> cantripRows) {
+        this.cantripRows = cantripRows;
+    }
+
+    public List<SpellRow> getS1Rows() {
+        return s1Rows;
+    }
+
+    public void setS1Rows(List<SpellRow> s1Rows) {
+        this.s1Rows = s1Rows;
+    }
+
+    public List<SpellRow> getS2Rows() {
+        return s2Rows;
+    }
+
+    public void setS2Rows(List<SpellRow> s2Rows) {
+        this.s2Rows = s2Rows;
+    }
+
+    public List<SpellRow> getS3Rows() {
+        return s3Rows;
+    }
+
+    public void setS3Rows(List<SpellRow> s3Rows) {
+        this.s3Rows = s3Rows;
+    }
+
+    public List<SpellRow> getS4Rows() {
+        return s4Rows;
+    }
+
+    public void setS4Rows(List<SpellRow> s4Rows) {
+        this.s4Rows = s4Rows;
+    }
+
+    public List<SpellRow> getS5Rows() {
+        return s5Rows;
+    }
+
+    public void setS5Rows(List<SpellRow> s5Rows) {
+        this.s5Rows = s5Rows;
+    }
+
+    public List<SpellRow> getS6Rows() {
+        return s6Rows;
+    }
+
+    public void setS6Rows(List<SpellRow> s6Rows) {
+        this.s6Rows = s6Rows;
+    }
+
+    public List<SpellRow> getS7Rows() {
+        return s7Rows;
+    }
+
+    public void setS7Rows(List<SpellRow> s7Rows) {
+        this.s7Rows = s7Rows;
+    }
+
+    public List<SpellRow> getS8Rows() {
+        return s8Rows;
+    }
+
+    public void setS8Rows(List<SpellRow> s8Rows) {
+        this.s8Rows = s8Rows;
+    }
+
+    public List<SpellRow> getS9Rows() {
+        return s9Rows;
+    }
+
+    public void setS9Rows(List<SpellRow> s9Rows) {
+        this.s9Rows = s9Rows;
+    }
+
+    public void setSpellSaveDC(String spellSaveDC) {
+        this.spellSaveDC = spellSaveDC;
+    }
+
+    public String getSpellAttackBonus() {
+        return spellAttackBonus;
+    }
+
+    public void setSpellAttackBonus(String spellAttackBonus) {
+        this.spellAttackBonus = spellAttackBonus;
+    }
+
+    public String getBackstory() {
+        return backstory;
+    }
+
+    public void setBackstory(String backstory) {
+        this.backstory = backstory;
+    }
+
+    public String getPersonalityTraits() {
+        return personalityTraits;
+    }
+
+    public void setPersonalityTraits(String personalityTraits) {
+        this.personalityTraits = personalityTraits;
+    }
+
+    public String getBonds() {
+        return bonds;
+    }
+
+    public void setBonds(String bonds) {
+        this.bonds = bonds;
+    }
+
+    public String getFlaws() {
+        return flaws;
+    }
+
+    public void setFlaws(String flaws) {
+        this.flaws = flaws;
+    }
+
+    public String getIdeals() {
+        return ideals;
+    }
+
+    public void setIdeals(String ideals) {
+        this.ideals = ideals;
+    }
+
+    public String getTotalWeight() {
+        return totalWeight;
+    }
+
+    public void setTotalWeight(String totalWeight) {
+        this.totalWeight = totalWeight;
     }
 
     public String getPassiveWisdom() {

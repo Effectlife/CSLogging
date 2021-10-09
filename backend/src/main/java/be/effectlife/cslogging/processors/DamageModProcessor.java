@@ -13,7 +13,7 @@ public class DamageModProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("dar");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("daid");
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("daid"); if(rowIds == null)return;
 
         ArrayList<DamageModRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {

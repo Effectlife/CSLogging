@@ -13,7 +13,7 @@ public class ToolProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("tor");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("toid");
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("toid"); if(rowIds == null)return;
 
         ArrayList<ToolRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {

@@ -1,7 +1,9 @@
 <template>
-    <div class="container">
-      <CharacterSheet :id="char" v-for="char in characters" :key="char" v-bind:char-id="char"
-                      style="display: block"/>
+  <div class="container">
+    <h2>Character sheets for Roll20</h2>
+    <p>Click on header for more details for the character</p>
+    <CharacterSheet :id="char" v-for="char in characters" :key="char" v-bind:char-id="char"
+                    style="display: block"/>
   </div>
 </template>
 
@@ -31,11 +33,9 @@ export default defineComponent({
     getCharacterNames(): void {
       api.getAllNames().then(response => {
         this.characters = response.data;
-        console.log(this.characters);
+      }).catch((error: AxiosError) => {
+        console.log(error)
       })
-          .catch((error: AxiosError) => {
-            console.log(error)
-          })
     }
   }, data: (): State => {
     return {

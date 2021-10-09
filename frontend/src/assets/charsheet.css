@@ -1,6 +1,93 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;800;900&display=swap");
 
-.coin p{
+.acc-panel .equipped, .acc-panel .equippedLabel{
+    text-align: left;
+    width: auto;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.rep-td:hover {
+    background-color: #ccc;
+}
+
+.acc-panel{
+    display: none;
+}
+.acc-panel-main{
+    display: none;
+}
+
+.charactersheet-container{
+
+}
+.spell-level .total{
+    top: 0px !important;
+}
+.biotext{
+    font-size: 13px !important;
+    font-weight: normal !important;
+    text-align: start  !important;
+    padding: 8px !important;
+    width: auto !important;
+
+}
+
+.rep-td .subitem .equipped {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    width: initial;
+    margin-left: 15px;
+}
+
+.rep-td .subitem .equippedlabel {
+    width: calc(100% - 50px);
+    text-align: left;
+    padding-left: 5px;
+}
+
+/*.rep-td span {*/
+/*    display: inline-block !important;*/
+/*}*/
+
+.rep-td input {
+    -webkit-appearance: checkbox !important;
+    height: 13px;
+    line-height: normal;
+    border: 0 \9;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    vertical-align: baseline;
+    font-size: 13px;
+    font-weight: normal;
+    display: inline !important;
+    margin-left: 4px;
+    color: #555;
+}
+
+.equipment-background {
+    line-height: 12px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #EFEFEF;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+}
+
+.coin p {
     position: relative;
     left: 0;
     top: 6px;
@@ -20,16 +107,18 @@
     color: black;
 }
 
-.charsheet .attacks{
+.charsheet .attacks {
     min-height: 100px !important;
 }
-.charsheet .hdice-dsaves-container .row-container{
+
+.charsheet .hdice-dsaves-container .row-container {
     border-collapse: separate;
     border-spacing: 4px 4px;
     float: initial !important;
 
 }
-.licensecontainer .container:not(.npc) .vitals-stats p{
+
+.licensecontainer .container:not(.npc) .vitals-stats p {
     margin-top: 14px;
     width: 100%;
     text-align: center;
@@ -45,15 +134,17 @@
     color: black;
 }
 
-.hp p{
+.hp p {
     font-size: 30px !important;
 }
-.rep-table hr{
+
+.rep-table hr {
     margin-top: 1px;
     margin-bottom: 1px;
     border: 0;
     border-top: 1px solid #e0e0e0;
 }
+
 .rep-table {
     border-collapse: separate;
     border-spacing: 4px 4px;
@@ -129,6 +220,9 @@ input, textarea, select, .uneditable-input {
 body {
     background: white;
 }
+
+/* ORIGINAL */
+
 
 .charsheet .edit-button {
     position: absolute;
@@ -890,6 +984,7 @@ body {
 .charsheet .col {
     display: inline-block;
     vertical-align: top;
+    margin-left: 2px;
 }
 
 .charsheet .attr-container button[type=roll], .charsheet .saving-throw button[type=roll], .charsheet .skill button[type=roll], .charsheet .ac-init-speed-container button[type=roll], .charsheet .subcontainer button[type=roll], .charsheet .npc button[type=roll] {
@@ -902,7 +997,7 @@ body {
     margin: 0;
 }
 
-.charsheet .saving-throw-container .label span, .charsheet .skills-container .label span, .charsheet .textbox-container .label span, .charsheet .ac-init-speed-container span.label, .charsheet .hp span, .charsheet .exhaustion span.label, .charsheet .hdice-dsaves-container span, .charsheet .attacks span, .charsheet .globalattack span, .charsheet .equipment span, .charsheet .textbox span, .charsheet .tool_proficiencies span, .charsheet .proficiencies span, .charsheet .traits span, .charsheet .spells span, .charsheet .options .body span {
+.charsheet .saving-throw-container .label span, .charsheet .skills-container .label span, .charsheet .textbox-container .label span, .charsheet .ac-init-speed-container span.label, .charsheet .hp span, .charsheet .exhaustion span.label, .charsheet .hdice-dsaves-container span, .charsheet .attacks span, .charsheet .globalattack span, .charsheet .equipment span, .charsheet .tool_proficiencies span, .charsheet .proficiencies span, .charsheet .traits span, .charsheet .spells span, .charsheet .options .body span {
     text-align: center !important;
 }
 
@@ -1615,7 +1710,7 @@ body {
     text-align: left;
 }
 
-.charsheet .saving-throw-container .label span, .charsheet .skills-container .label span, .charsheet .textbox-container .label span, .charsheet .ac-init-speed-container span.label, .charsheet .hp span, .charsheet .exhaustion span.label, .charsheet .hdice-dsaves-container span, .charsheet .attacks span, .charsheet .globalattack span, .charsheet .equipment span, .charsheet .textbox span, .charsheet .tool_proficiencies span, .charsheet .proficiencies span, .charsheet .traits span, .charsheet .spells span, .charsheet .options .body span {
+.charsheet .saving-throw-container .label span, .charsheet .skills-container .label span, .charsheet .textbox-container .label span, .charsheet .ac-init-speed-container span.label, .charsheet .hp span, .charsheet .exhaustion span.label, .charsheet .hdice-dsaves-container span, .charsheet .attacks span, .charsheet .globalattack span, .charsheet .equipment span, .charsheet .textbox span:not(.acc-panel), .charsheet .tool_proficiencies span, .charsheet .proficiencies span, .charsheet .traits span:not(.acc-panel), .charsheet .spells span, .charsheet .options .body span {
     display: block;
     font-size: 9px;
     line-height: 12px;
@@ -1916,7 +2011,7 @@ body {
     content: "" !important;
 }
 
-.charsheet .attacks .display input, .charsheet .tool .display input, .charsheet .equipment .item input, .charsheet .attacks .display span, .charsheet .tool .display span, .charsheet .equipment .item span, .charsheet .proficiencies .display span {
+.charsheet .tool .display input, .charsheet .equipment .item input, .charsheet .tool .display span, .charsheet .equipment .item span, .charsheet .proficiencies .display span {
     font-size: 12px;
     line-height: 12px;
     border-top-left-radius: 5px;
