@@ -75,12 +75,9 @@ class Character {
 }
 
 export default {
-    hello(): Promise<AxiosResponse<string>> {
-        return axiosApi.get(`/hello`);
-    },
 
     getCharacter(charname: string): Promise<AxiosResponse<string>> {
-        return axiosApi.get('/getCharacter?name=' + charname);
+        return axiosApi.get('/getCharacter?characterId=' + charname);
     },
 
     getAllNames(): Promise<AxiosResponse<Character>> {

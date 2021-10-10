@@ -5,8 +5,6 @@ import Service from '../views/Service.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {path: '/', component: Home},
-    {path: '/callservice', component: Service},
-    // {path: '/bootstrap', component: Bootstrap},
     // otherwise redirect to home
     {path: '/:pathMatch(.*)*', redirect: '/'}
 ]

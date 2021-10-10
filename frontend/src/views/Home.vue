@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 import CharacterSheets from "@/components/CharacterSheets.vue"; // @ is an alias to /src
 
 export default defineComponent({
@@ -15,3 +15,4 @@ export default defineComponent({
   },
 });
 </script>
+

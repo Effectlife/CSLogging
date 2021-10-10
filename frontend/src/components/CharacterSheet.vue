@@ -1,105 +1,89 @@
-<template>
-  <div class="content" v-bind:id="charName">
+<!--<template><div></div></template>-->
 
-    <table class="table is-narrow is-hoverable">
-      <tbody>
-      <tr>
-        <th>Name</th>
-        <td>{{charName}}</td>
-      </tr>
-      <tr>
-        <th>Strength</th>
-        <td>{{ strength }}</td>
-      </tr>
-      <tr>
-        <th>Dexterity</th>
-        <td>{{ dexterity }}</td>
-      </tr>
-      <tr>
-        <th>Constitution</th>
-        <td>{{ constitution }}</td>
-      </tr>
-      <tr>
-        <th>Intelligence</th>
-        <td>{{ intelligence }}</td>
-      </tr>
-      <tr>
-        <th>Wisdom</th>
-        <td>{{ wisdom }}</td>
-      </tr>
-      <tr>
-        <th>Charisma</th>
-        <td>{{ charisma }}</td>
-      </tr>
-      </tbody>
-    </table>
+<template src="./CharacterSheet.html"/>
 
-  </div>
-</template>
 <style scoped>
-th{
-  width: 10em;
-}
+
 </style>
 <script lang="ts">
-
 import api from "@/api/backend-api";
 import {AxiosError} from "axios";
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 let interval: number;
 
 interface State {
-  charisma: number;
-  constitution: number;
-  dexterity: number;
-  strength: number;
-  wisdom: number;
-  intelligence: number;
+  ch: any;
 }
 
-export default defineComponent( {
+export default defineComponent({
   name: "CharacterSheet",
   props: {
-    charName: {
+    charId: {
       type: String,
       required: true
     }
   },
   mounted(): void {
     this.getCharacter();
-    interval = setInterval(this.getCharacter, 1000);
+    interval = setInterval(this.getCharacter, 5000);
   },
   methods: {
     // Fetches posts when the component is created.
     getCharacter(): void {
-      api.getCharacter(this.charName).then(response => {
+      api.getCharacter(this.charId).then(response => {
         let data: any = response.data;
-        this.$data.charisma = data.charisma;
-        this.$data.constitution = data.constitution;
-        this.$data.dexterity = data.dexterity;
-        this.$data.strength = data.strength;
-        this.$data.wisdom = data.wisdom;
-        this.$data.intelligence = data.intelligence;
-        console.log(data);
+        this.$data.ch = data;
       })
           .catch((error: AxiosError) => {
             console.log(error)
           })
+    },
+    toggleAcc(event: any): void {
+
+      function findAncestor(el: Element, tag: string): any {
+        if (el.nodeName.toLowerCase() == tag.toLowerCase() || !el.parentElement) return el;
+        return findAncestor(el.parentElement, tag);
+      }
+
+      var panel: HTMLElement;
+      panel = findAncestor(event.target, 'tr') as HTMLElement;
+      panel = Array.from(panel.querySelectorAll(".acc-panel"))[0] as HTMLElement;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    },
+    toggleAccMain(event: any): void {
+
+      function findAncestor(el: Element, cls: string): any {
+        if (el.classList.contains(cls) ||!el.parentElement) return el;
+        return findAncestor(el.parentElement, cls);
+      }
+
+      var panel: HTMLElement;
+      panel = findAncestor(event.target, 'container') as HTMLElement;
+      let panels = Array.from(panel.querySelectorAll(".acc-panel-main")) as HTMLElement[];
+      console.log(panel);
+      console.log(panels.length);
+      for (let i = 0; i < panels.length; i++) {
+        if (panels[i].style.display === "block") {
+          panels[i].style.display = "none";
+        } else {
+          panels[i].style.display = "block";
+        }
+      }
+
+
     }
   },
   data: (): State => {
     return {
-      charisma: 0,
-      constitution: 0,
-      dexterity: 0,
-      strength: 0,
-      wisdom: 0,
-      intelligence: 0,
+      ch: []
     }
   }, beforeUnmount(): void {
     clearInterval(interval);
   },
 })
 </script>
-
