@@ -99,9 +99,12 @@ public class CharacterService {
     }
 
     public void processCharacters(List<Map<String, Object>> characters) {
+        List<String> inputChars = characters.stream().map(c -> c.get("id").toString()).collect(Collectors.toList());
+        characterCache.keySet().stream().filter(s -> !inputChars.contains(s)).collect(Collectors.toList()).forEach(characterCache::remove);
         for (Map<String, Object> characterData : characters) {
             characterCache.put(characterData.get("id").toString(), processCharacterData(characterData));
         }
+
     }
 
     private WebCharacter processCharacterData(Map<String, Object> characterData) {
