@@ -35,22 +35,22 @@ public class BasicsProcessor implements Processor {
         webCharacter.setGp(data.get("gp"));
         webCharacter.setPp(data.get("pp"));
 
-        webCharacter.setCharacterAppearance(multiLineReplace(webCharacter, data.get("ca")));
-        webCharacter.setBackstory(multiLineReplace(webCharacter, data.get("cb")));
-        webCharacter.setAlliesAndOrganisations(multiLineReplace(webCharacter, data.get("ao")));
-        webCharacter.setAdditionalFeatureAndTraits(multiLineReplace(webCharacter, data.get("aft")));
-        webCharacter.setTreasure(multiLineReplace(webCharacter, data.get("tre")));
-        webCharacter.setPersonalityTraits(multiLineReplace(webCharacter, data.get("pt")));
-        webCharacter.setBonds(multiLineReplace(webCharacter, data.get("bo")));
-        webCharacter.setFlaws(multiLineReplace(webCharacter, data.get("fl")));
-        webCharacter.setIdeals(multiLineReplace(webCharacter, data.get("ide")));
+        webCharacter.setCharacterAppearance(multiLineReplace(data.get("ca")));
+        webCharacter.setBackstory(multiLineReplace(data.get("cb")));
+        webCharacter.setAlliesAndOrganisations(multiLineReplace(data.get("ao")));
+        webCharacter.setAdditionalFeatureAndTraits(multiLineReplace(data.get("aft")));
+        webCharacter.setTreasure(multiLineReplace(data.get("tre")));
+        webCharacter.setPersonalityTraits(multiLineReplace(data.get("pt")));
+        webCharacter.setBonds(multiLineReplace(data.get("bo")));
+        webCharacter.setFlaws(multiLineReplace(data.get("fl")));
+        webCharacter.setIdeals(multiLineReplace(data.get("ide")));
 
-        webCharacter.setClassDisplay(multiLineReplace(webCharacter, data.get("cldi")));
-        webCharacter.setBackground(multiLineReplace(webCharacter, data.get("back")));
-        webCharacter.setRaceDisplay(multiLineReplace(webCharacter, data.get("rcdi")));
-        webCharacter.setAlignment(multiLineReplace(webCharacter, data.get("alig")));
-        webCharacter.setExperience(multiLineReplace(webCharacter, data.get("exp")));
-        webCharacter.setPassiveWisdom(multiLineReplace(webCharacter, data.get("pw")));
+        webCharacter.setClassDisplay(multiLineReplace(data.get("cldi")));
+        webCharacter.setBackground(multiLineReplace(data.get("back")));
+        webCharacter.setRaceDisplay(multiLineReplace(data.get("rcdi")));
+        webCharacter.setAlignment(multiLineReplace(data.get("alig")));
+        webCharacter.setExperience(multiLineReplace(data.get("exp")));
+        webCharacter.setPassiveWisdom(multiLineReplace(data.get("pw")));
 
         webCharacter.setDeathSaveSuccess1(bool(data, "dss1"));
         webCharacter.setDeathSaveSuccess2(bool(data, "dss2"));

@@ -26,14 +26,18 @@ public interface Processor {
         return attribute != null && bool(attribute, "current");
     }
 
-    default String multiLineReplace(WebCharacter webCharacter, String val) {
+    default String multiLineReplace(String val) {
+        if (StringUtils.isBlank(val)) return "";
 
-        if (StringUtils.isNotBlank(val) && val.trim().startsWith("%hide")) {
+        val = val.replaceAll("¤", "<br>");
+        String toCheckToShow = val.replace("<br>", "");
+        if (!toCheckToShow.trim().startsWith("%show")) {
             val = "<i>Hidden by user</i>";
+        } else {
+            val = val.replace("%show", "");
         }
 
 
-        if (StringUtils.isNotBlank(val)) return val.replaceAll("¤", "<br>");
-        return val;
+        return val.trim();
     }
 }
