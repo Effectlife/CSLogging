@@ -1,4 +1,4 @@
-package be.effectlife.cslogging.models.spells;
+package be.effectlife.cslogging.models;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

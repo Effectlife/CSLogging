@@ -69,6 +69,8 @@ public class CharacterService {
     private Spell8Processor spell8Processor;
     @Autowired
     private Spell9Processor spell9Processor;
+    @Autowired
+    private EsperProcessor esperProcessor;
 
     @PostConstruct
     public void listify() {
@@ -92,23 +94,25 @@ public class CharacterService {
         processors.add(spell7Processor);
         processors.add(spell8Processor);
         processors.add(spell9Processor);
+        processors.add(esperProcessor);
     }
 
     public List<WebCharacter> getAllCharacters() {
         return new ArrayList<>(characterCache.values());
     }
 
-    public void processCharacters(List<Map<String, Object>> characters) {
+    public void processCharacters(String sheetType, List<Map<String, Object>> characters) {
         List<String> inputChars = characters.stream().map(c -> c.get("id").toString()).collect(Collectors.toList());
         characterCache.keySet().stream().filter(s -> !inputChars.contains(s)).collect(Collectors.toList()).forEach(characterCache::remove);
         for (Map<String, Object> characterData : characters) {
-            characterCache.put(characterData.get("id").toString(), processCharacterData(characterData));
+            characterCache.put(characterData.get("id").toString(), processCharacterData(sheetType, characterData));
         }
 
     }
 
-    private WebCharacter processCharacterData(Map<String, Object> characterData) {
+    private WebCharacter processCharacterData(String sheetType, Map<String, Object> characterData) {
         WebCharacter webCharacter = new WebCharacter();
+        webCharacter.setSheetType(sheetType);
         webCharacter.setId(String.valueOf(characterData.get("id")));
         webCharacter.setName(String.valueOf(characterData.get("name")));
         for (Processor processor : processors) {

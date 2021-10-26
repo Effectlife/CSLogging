@@ -15,8 +15,8 @@
                                 <span
                                 >BIO</span>
                                 <input class="tab-button spells" name="attr_tab" type="radio" value="spells">
-                                <span
-                                >SPELLS</span>
+                                <span v-if="ch.sheetType === 'default'">SPELLS</span>
+                                <span v-if="ch.sheetType === 'esper'">POWERS</span>
                                 <div class="page core">
                                     <div class="header" @click="toggleAccMain"> <!-- This is click -->
                                         <div class="name-container">
@@ -236,296 +236,28 @@
                                                 </div>
                                                 <div class="skills-container skills-list">
                                                     <div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_acrobatics_prof"
-                                                                   readonly
-                                                                   :value="ch.acrobatics_prof"
-                                                                   :checked="ch.acrobatics_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_acrobatics_bonus">
-                                                                {{
-                                                                    ch.acrobatics_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Acrobatics
-                                                                <span>(Dex)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill" data-i18n-list-item="animal_handling">
-                                                            <input type="checkbox"
-                                                                   name="attr_animal_handling_prof"
-                                                                   readonly
-                                                                   :value="ch.animal_handling_prof"
-                                                                   :checked="ch.animal_handling_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_animal_handling_bonus">
-                                                                {{
-                                                                    ch.animal_handling_bonus
-                                                                }}
-                                                            </span>
-                                                            <p
-                                                                    class="attribute-title">Animal Handling
-                                                                <span>(Wis)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_arcana_prof"
-                                                                   readonly
-                                                                   :value="ch.arcana_prof"
-                                                                   :checked="ch.arcana_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_arcana_bonus">
-                                                                {{
-                                                                    ch.arcana_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Arcana
-                                                                <span>(Int)</span>
-                                                            </p>
 
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_athletics_prof"
-                                                                   readonly
-                                                                   :value="ch.athletics_prof"
-                                                                   :checked="ch.athletics_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_athletics_bonus">
-                                                                {{
-                                                                    ch.athletics_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Athletics
-                                                                <span>(Str)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_deception_prof"
-                                                                   readonly
-                                                                   :value="ch.deception_prof"
-                                                                   :checked="ch.deception_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_deception_bonus">
-                                                                {{
-                                                                    ch.deception_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Deception
-                                                                <span>(Cha)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_history_prof"
-                                                                   readonly
-                                                                   :value="ch.history_prof"
-                                                                   :checked="ch.history_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_history_bonus">
-                                                                {{
-                                                                    ch.history_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">History
-                                                                <span>(Int)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_insight_prof"
-                                                                   readonly
-                                                                   :value="ch.insight_prof"
-                                                                   :checked="ch.insight_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_insight_bonus">
-                                                                {{
-                                                                    ch.insight_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Insight
-                                                                <span>(Wis)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_intimidation_prof"
-                                                                   readonly
-                                                                   :value="ch.intimidation_prof"
-                                                                   :checked="ch.intimidation_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_intimidation_bonus">
-                                                                {{
-                                                                    ch.intimidation_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Intimidation
-                                                                <span>(Cha)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_investigation_prof"
-                                                                   readonly
-                                                                   :value="ch.investigation_prof"
-                                                                   :checked="ch.investigation_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_investigation_bonus">
-                                                                {{
-                                                                    ch.investigation_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Investigation
-                                                                <span>(Int)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_medicine_prof"
-                                                                   readonly
-                                                                   :value="ch.medicine_prof"
-                                                                   :checked="ch.medicine_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_medicine_bonus">
-                                                                {{
-                                                                    ch.medicine_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Medicine
-                                                                <span>(Wis)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_nature_prof"
-                                                                   readonly
-                                                                   :value="ch.nature_prof"
-                                                                   :checked="ch.nature_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_nature_bonus">
-                                                                {{
-                                                                    ch.nature_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Nature
-                                                                <span>(Int)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_perception_prof"
-                                                                   readonly
-                                                                   :value="ch.perception_prof"
-                                                                   :checked="ch.perception_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_perception_bonus">
-                                                                {{
-                                                                    ch.perception_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Perception
-                                                                <span>(Wis)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_performance_prof"
-                                                                   readonly
-                                                                   :value="ch.performance_prof"
-                                                                   :checked="ch.performance_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_performance_bonus">
-                                                                {{
-                                                                    ch.performance_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Performance
-                                                                <span>(Cha)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_persuasion_prof"
-                                                                   readonly
-                                                                   :value="ch.persuasion_prof"
-                                                                   :checked="ch.persuasion_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_persuasion_bonus">
-                                                                {{
-                                                                    ch.persuasion_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Persuasion
-                                                                <span>(Cha)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_religion_prof"
-                                                                   readonly
-                                                                   :value="ch.religion_prof"
-                                                                   :checked="ch.religion_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_religion_bonus">
-                                                                {{
-                                                                    ch.religion_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Religion
-                                                                <span>(Int)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_sleight_of_hand_prof"
-                                                                   readonly
-                                                                   :value="ch.sleight_of_hand_prof"
-                                                                   :checked="ch.sleight_of_hand_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_sleight_of_hand_bonus">
-                                                                {{
-                                                                    ch.sleight_of_hand_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Sleight of Hand
-                                                                <span>(Dex)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_stealth_prof"
-                                                                   readonly
-                                                                   :value="ch.stealth_prof"
-                                                                   :checked="ch.stealth_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_stealth_bonus">
-                                                                {{
-                                                                    ch.stealth_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Stealth
-                                                                <span>(Dex)</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="skill">
-                                                            <input type="checkbox"
-                                                                   name="attr_survival_prof"
-                                                                   readonly
-                                                                   :value="ch.survival_prof"
-                                                                   :checked="ch.survival_prof"
-                                                                   onclick="this.checked=!this.checked;">
-                                                            <span name="attr_survival_bonus">
-                                                                {{
-                                                                    ch.survival_bonus
-                                                                }}
-                                                            </span>
-                                                            <p class="attribute-title">Survival
-                                                                <span>(Wis)</span>
-                                                            </p>
-                                                        </div>
+
+                                                        <template :id="bp.skillName"
+                                                                  v-for="bp in ch.bonusProfRows"
+                                                                  :key="bp.skillName">
+                                                            <div class="skill">
+                                                                <input type="checkbox"
+                                                                       name="attr_acrobatics_prof"
+                                                                       readonly
+                                                                       :value="bp.prof"
+                                                                       :checked="bp.prof"
+                                                                       onclick="this.checked=!this.checked;">
+                                                                <span name="attr_acrobatics_bonus">
+                                                                    {{
+                                                                        bp.bonus
+                                                                    }}
+                                                                </span>
+                                                                <p class="attribute-title">{{ bp.skillName }}
+                                                                    <span>({{ bp.rel }})</span>
+                                                                </p>
+                                                            </div>
+                                                        </template>
                                                     </div>
                                                     <div class="label">
                                                         <span>SKILLS</span>
@@ -779,7 +511,8 @@
                                                                                         <hr>
                                                                                         <span class="equippedlabel"
                                                                                               style="display: block">RANGE</span>
-                                                                                        <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere" class="equippedlabel">
+                                                                                        <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere"
+                                                                                           class="equippedlabel">
                                                                                             {{
                                                                                                 atk.atkRange === '' ? '???' : atk.atkRange
                                                                                             }}
@@ -788,7 +521,8 @@
                                                                                         <span class="equippedlabel"
                                                                                               style="display: block">SAVE
                                                                                             EFFECT</span>
-                                                                                        <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere" class="equippedlabel">
+                                                                                        <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere"
+                                                                                           class="equippedlabel">
                                                                                             {{
                                                                                                 atk.saveEffect === '' ? '???' : atk.saveEffect
                                                                                             }}
@@ -797,11 +531,12 @@
                                                                                         <span class="equippedlabel"
                                                                                               style="display: block">DESCRIPTION</span>
 
-                                                                                            <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere" class="equippedlabel">
-                                                                                                {{
-                                                                                                    atk.atkDesc === '' ? '???' : atk.atkDesc
-                                                                                                }}
-                                                                                            </p>
+                                                                                        <p style="font-weight: normal; font-size: larger; margin:0; width: fit-content; word-wrap: anywhere"
+                                                                                           class="equippedlabel">
+                                                                                            {{
+                                                                                                atk.atkDesc === '' ? '???' : atk.atkDesc
+                                                                                            }}
+                                                                                        </p>
 
 
                                                                                         <hr>
@@ -828,7 +563,7 @@
                                                 >ATTACKS &amp; SPELLCASTING</span>
                                             </div>
                                             <div class="equipment">
-                                                <div class="money">
+                                                <div class="money" v-if="ch.sheetType === 'default'">
                                                     <div class="coin">
                                                         <span class="label">CP</span>
                                                         <p>{{ ch.cp }}</p>
@@ -847,6 +582,16 @@
                                                     </div>
                                                     <div class="coin">
                                                         <span class="label">PP</span>
+                                                        <p>{{ ch.pp }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="money" v-if="ch.sheetType === 'esper'">
+                                                    <div class="coin">
+                                                        <span class="label" style="background-image: none; left:40px">CUBIL</span>
+                                                        <p>{{ ch.gp }}</p>
+                                                    </div>
+                                                    <div class="coin">
+                                                        <span class="label" style="background-image: none; left:40px">COINS</span>
                                                         <p>{{ ch.pp }}</p>
                                                     </div>
                                                 </div>
@@ -949,6 +694,10 @@
                                                         >TOTAL WEIGHT</span>
                                                         <input type="text" name="attr_weighttotal"
                                                                :value="ch.totalWeight">
+                                                        <span class="encumb over"
+                                                              data-i18n="over-carrying-cap-u">{{
+                                                                ch.encumberance
+                                                            }}</span>
                                                     </div>
                                                 </div>
                                                 <span class="label"
@@ -1199,13 +948,120 @@
                                         </div>
                                     </div>
                                     <div class="acc-panel-main body">
+                                        <div v-if="ch.sheetType === 'esper'">
+
+                                            <div class="col col1">
+                                                <div class="sheet-tp esper-border" style="margin-top: 10px">
+                                                    <div class="sheet-top"><span data-i18n="tp-max-u">Talent Point
+                                                        Maximum</span>
+                                                        <input type="text" name="attr_tp_max" title="@{tp_max}" readonly :value="ch.talentPointsMax">
+                                                    </div>
+                                                    <input type="number" name="attr_tp" title="@{tp}" readonly :value="ch.talentPoints">
+                                                    <span
+                                                        class="sheet-label" data-i18n="tp-current-u"
+                                                        style="margin-top: 20px">TALENT POINTS REMAINING</span>
+                                                </div>
+                                            </div>
+                                            <div class="col col2"><span class="sheet-label"
+                                                                        data-i18n="talent-slots-label"
+                                                                        style="margin-bottom: 3px ; margin-top: 10px">TALENT
+                                                SLOTS (Cybermancer)</span>
+                                                <div class="sheet-hdice-dsaves-container" style="width: 242px">
+                                                    <div class="sheet-subcontainer esper-border-half">
+                                                        <div class="sheet-top"><span data-i18n="max-rank-u">Rank</span>
+                                                            <input type="text" name="attr_slot_rank_max"
+                                                                   title="@{slot_rank_max}" readonly :value="ch.slotRank">
+                                                        </div>
+                                                        <input type="number" name="attr_slots_max"
+                                                               title="@{talent_slots}" style="margin-bottom: -6px" readonly :value="ch.slotsMax">
+                                                        <span
+                                                            class="sheet-label" data-i18n="talent-slots-u"
+                                                            style="margin-top: 6px">MAX TALENT SLOTS</span>
+                                                    </div>
+                                                    <div class="sheet-subcontainer esper-border-half">
+                                                        <div class="sheet-speed">
+                                                            <input type="number" name="attr_slots_used"
+                                                                   title="@{slots_used}" style="margin-top: 20px" readonly :value="ch.slotsUsed">
+                                                            <span
+                                                                class="sheet-label" data-i18n="used-talent-slots"
+                                                                style="margin-top: 6px">SLOTS REMAINING</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col3">
+                                                <div class="sheet-class_options sheet-esper-mastery esper-border"
+                                                     style="margin-top: 10px">
+                                                    <div class="sheet-column"><span class="sheet-em_blank">&nbsp;</span><span
+                                                            data-i18n="em_available">Gained?</span><span
+                                                            data-i18n="em_used">Used</span></div>
+                                                    <div class="sheet-column"><span>6th</span>
+                                                        <div class="sheet-sub-button">
+                                                            <input type="checkbox" name="attr_mastery_6th" value="1" :value="ch.mastery6"
+                                                                   :checked="ch.mastery6"
+                                                                   readonly
+                                                                   onclick="this.checked=!this.checked;">
+                                                        </div>
+                                                        <input type="checkbox" name="attr_mastery_6th_used" value="1" :value="ch.mastery6used"
+                                                               :checked="ch.mastery6used"
+                                                               readonly
+                                                               onclick="this.checked=!this.checked;">
+                                                    </div>
+                                                    <div class="sheet-column"><span>7th</span>
+                                                        <div class="sheet-sub-button">
+                                                            <input type="checkbox" name="attr_mastery_7th" value="1" :value="ch.mastery7"
+                                                                   :checked="ch.mastery7"
+                                                                   readonly
+                                                                   onclick="this.checked=!this.checked;">
+                                                        </div>
+                                                        <input type="checkbox" name="attr_mastery_7th_used" value="1" :value="ch.mastery7used"
+                                                               :checked="ch.mastery7used"
+                                                               readonly
+                                                               onclick="this.checked=!this.checked;">
+                                                    </div>
+                                                    <div class="sheet-column"><span>8th</span>
+                                                        <div class="sheet-sub-button">
+                                                            <input type="checkbox" name="attr_mastery_8th" value="1" :value="ch.mastery8"
+                                                                   :checked="ch.mastery8"
+                                                                   readonly
+                                                                   onclick="this.checked=!this.checked;">
+                                                        </div>
+                                                        <input type="checkbox" name="attr_mastery_8th_used" value="1" :value="ch.mastery8used"
+                                                               :checked="ch.mastery8used"
+                                                               readonly
+                                                               onclick="this.checked=!this.checked;">
+                                                    </div>
+                                                    <div class="sheet-column"><span>9th</span>
+                                                        <div class="sheet-sub-button">
+                                                            <input type="checkbox" name="attr_mastery_9th" value="1" :value="ch.mastery9"
+                                                                   :checked="ch.mastery9"
+                                                                   readonly
+                                                                   onclick="this.checked=!this.checked;">
+                                                        </div>
+                                                        <input type="checkbox" name="attr_mastery_9th_used" value="1" :value="ch.mastery9used"
+                                                               :checked="ch.mastery9used"
+                                                               readonly
+                                                               onclick="this.checked=!this.checked;">
+                                                    </div>
+                                                    <span class="sheet-label"
+                                                          style="margin-top: 4px ; "
+                                                          data-i18n="esper-mastery-u">ESPER MASTERY</span>
+                                                </div>
+                                            </div>
+                                            <div class="sheet-col sheet-col-full">
+                                                <div class="sheet-spell-header"><span data-i18n="esper-powers-u" style="text-align: start !important">ESPER
+                                                    POWERS</span></div>
+                                            </div>
+                                        </div>
                                         <div class="col col1">
                                             <div class="spell-level">
                                                 <div class="level">
                                                     <span class="label">0</span>
                                                 </div>
                                                 <div class="cantrips">
-                                                    <span class="label">CANTRIPS</span>
+                                                    <span v-if="ch.sheetType==='default'" class="label">CANTRIPS</span>
+                                                    <span v-if="ch.sheetType==='esper'" class="label">PRIME
+                                                        POWERS</span>
                                                 </div>
                                             </div>
                                             <div class="spell-container">
@@ -1219,18 +1075,26 @@
                                                                                 cantrip.name
                                                                             }}</span>
                                                                     </div>
-                                                                    <div class="row italics">
+                                                                    <div class="row italics"><span
+                                                                            name="attr_spelllevel"
+                                                                            v-if="ch.sheetType==='esper'">Prime&nbsp</span>
                                                                         <span name="attr_spellschool"
                                                                               data-i18n-dynamic="data-i18n-dynamic">
                                                                             {{ cantrip.school }}
                                                                         </span>
-                                                                        <span name="attr_spelllevel">cantrip</span>
+                                                                        <span name="attr_spelllevel"
+                                                                              v-if="ch.sheetType==='default'">cantrip</span>
                                                                         <input type="checkbox" name="attr_spellritual"
                                                                                :value="cantrip.ritual"
                                                                                :checked="cantrip.ritual"
                                                                                readonly
                                                                                onclick="this.checked=!this.checked;">
-                                                                        <span>&nbsp(<span>ritual</span>)</span>
+                                                                        <span v-if="ch.sheetType === 'default'">
+                                                                            &nbsp(<span>ritual</span>)
+                                                                        </span>
+                                                                        <span v-if="ch.sheetType === 'esper'">
+                                                                            &nbsp(<span>conventional</span>)
+                                                                        </span>
                                                                     </div>
                                                                     <div class="row">
                                                                         <span class="bold">Casting Time:</span>
@@ -1244,17 +1108,17 @@
                                                                             {{ cantrip.range }}
                                                                         </span>
                                                                     </div>
-                                                                    <div class="row">
+                                                                    <div class="row" v-if="ch.sheetType==='default'">
                                                                         <span class="bold">Target:</span>
                                                                         <span name="attr_spelltarget">
                                                                             {{ cantrip.target }}
                                                                         </span>
                                                                     </div>
-                                                                    <div class="row">
+                                                                    <div class="row" v-if="ch.sheetType==='default'">
                                                                         <span class="bold">Components:</span>
                                                                         {{ cantrip.compVsm }}
                                                                     </div>
-                                                                    <div class="row">
+                                                                    <div class="row" v-if="ch.sheetType==='default'">
                                                                         <span name="attr_spellcomp_materials">
                                                                             {{ cantrip.compMaterials }}
                                                                         </span>
@@ -1327,19 +1191,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    1&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s1.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">1</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">1</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s1.ritual"
                                                                                        :checked="s1.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1358,7 +1229,8 @@
                                                                                     {{ s1.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1366,13 +1238,15 @@
                                                                                     {{ s1.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s1.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s1.compMaterials }}
                                                                                 </span>
@@ -1444,19 +1318,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    2&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s2.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">2</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">2</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s2.ritual"
                                                                                        :checked="s2.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1475,7 +1356,8 @@
                                                                                     {{ s2.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1483,13 +1365,15 @@
                                                                                     {{ s2.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s2.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s2.compMaterials }}
                                                                                 </span>
@@ -1563,19 +1447,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    3&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s3.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">3</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">3</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s3.ritual"
                                                                                        :checked="s3.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1594,7 +1485,8 @@
                                                                                     {{ s3.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1602,13 +1494,15 @@
                                                                                     {{ s3.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s3.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s3.compMaterials }}
                                                                                 </span>
@@ -1680,19 +1574,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    4&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s4.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">4</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">4</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s4.ritual"
                                                                                        :checked="s4.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1711,7 +1612,8 @@
                                                                                     {{ s4.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1719,13 +1621,15 @@
                                                                                     {{ s4.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s4.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s4.compMaterials }}
                                                                                 </span>
@@ -1797,19 +1701,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    5&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s5.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">5</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">5</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s5.ritual"
                                                                                        :checked="s5.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1828,7 +1739,8 @@
                                                                                     {{ s5.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1836,13 +1748,15 @@
                                                                                     {{ s5.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s5.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s5.compMaterials }}
                                                                                 </span>
@@ -1916,19 +1830,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    6&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s6.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">6</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">6</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s6.ritual"
                                                                                        :checked="s6.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -1947,7 +1868,8 @@
                                                                                     {{ s6.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -1955,13 +1877,15 @@
                                                                                     {{ s6.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s6.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s6.compMaterials }}
                                                                                 </span>
@@ -2033,19 +1957,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    7&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s7.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">7</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">7</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s7.ritual"
                                                                                        :checked="s7.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -2064,7 +1995,8 @@
                                                                                     {{ s7.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -2072,13 +2004,15 @@
                                                                                     {{ s7.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s7.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s7.compMaterials }}
                                                                                 </span>
@@ -2150,19 +2084,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    8&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s8.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">8</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">8</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s8.ritual"
                                                                                        :checked="s8.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -2181,7 +2122,8 @@
                                                                                     {{ s8.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -2189,13 +2131,15 @@
                                                                                     {{ s8.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s8.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s8.compMaterials }}
                                                                                 </span>
@@ -2267,19 +2211,26 @@
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row italics">
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='esper'">Rank
+                                                                                    9&nbsp</span>
                                                                                 <span name="attr_spellschool"
                                                                                       data-i18n-dynamic="data-i18n-dynamic">
                                                                                     {{ s9.school }}
                                                                                 </span>
-                                                                                <span name="attr_spelllevel">9</span>
+                                                                                <span name="attr_spelllevel"
+                                                                                      v-if="ch.sheetType==='default'">9</span>
                                                                                 <input type="checkbox"
                                                                                        name="attr_spellritual"
                                                                                        :value="s9.ritual"
                                                                                        :checked="s9.ritual"
                                                                                        readonly
                                                                                        onclick="this.checked=!this.checked;">
-                                                                                <span>
+                                                                                <span v-if="ch.sheetType === 'default'">
                                                                                     &nbsp(<span>ritual</span>)
+                                                                                </span>
+                                                                                <span v-if="ch.sheetType === 'esper'">
+                                                                                    &nbsp(<span>conventional</span>)
                                                                                 </span>
                                                                             </div>
                                                                             <div class="row">
@@ -2298,7 +2249,8 @@
                                                                                     {{ s9.range }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Target:
                                                                                 </span>
@@ -2306,13 +2258,15 @@
                                                                                     {{ s9.target }}
                                                                                 </span>
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span class="bold">
                                                                                     Components:
                                                                                 </span>
                                                                                 {{ s9.compVsm }}
                                                                             </div>
-                                                                            <div class="row">
+                                                                            <div class="row"
+                                                                                 v-if="ch.sheetType==='default'">
                                                                                 <span name="attr_spellcomp_materials">
                                                                                     {{ s9.compMaterials }}
                                                                                 </span>
@@ -2373,7 +2327,7 @@
                                             https://wiki.roll20.net/5th_Edition_OGL_by_Roll20</span>
                                     </div>
                                 </div>
-                                <hr style="border-color: #ccc; border-width: 2px; margin-bottom: 5px" >
+                                <hr style="border-color: #ccc; border-width: 2px; margin-bottom: 5px">
                             </div>
                         </div>
                     </div>

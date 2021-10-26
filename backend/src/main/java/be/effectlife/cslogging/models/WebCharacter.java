@@ -1,6 +1,5 @@
 package be.effectlife.cslogging.models;
 
-import be.effectlife.cslogging.models.spells.SpellRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +7,7 @@ import java.util.List;
 
 public class WebCharacter {
     private static final Logger LOG = LoggerFactory.getLogger(WebCharacter.class);
-
+    private String sheetType;
     //Basic information
     private String id;
     private String name;
@@ -83,6 +82,7 @@ public class WebCharacter {
     private List<SpellRow> s7Rows;
     private List<SpellRow> s8Rows;
     private List<SpellRow> s9Rows;
+    private List<BonusProfRow> bonusProfRows;
 
 
     //basic stats
@@ -118,42 +118,6 @@ public class WebCharacter {
     private boolean charisma_save_prof;
 
     //Skills
-    private String acrobatics_bonus;
-    private boolean acrobatics_prof;
-    private String animal_handling_bonus;
-    private boolean animal_handling_prof;
-    private String arcana_bonus;
-    private boolean arcana_prof;
-    private String athletics_bonus;
-    private boolean athletics_prof;
-    private String deception_bonus;
-    private boolean deception_prof;
-    private String history_bonus;
-    private boolean history_prof;
-    private String insight_bonus;
-    private boolean insight_prof;
-    private String intimidation_bonus;
-    private boolean intimidation_prof;
-    private String investigation_bonus;
-    private boolean investigation_prof;
-    private String medicine_bonus;
-    private boolean medicine_prof;
-    private String nature_bonus;
-    private boolean nature_prof;
-    private String perception_bonus;
-    private boolean perception_prof;
-    private String performance_bonus;
-    private boolean performance_prof;
-    private String persuasion_bonus;
-    private boolean persuasion_prof;
-    private String religion_bonus;
-    private boolean religion_prof;
-    private String sleight_of_hand_bonus;
-    private boolean sleight_of_hand_prof;
-    private String stealth_bonus;
-    private boolean stealth_prof;
-    private String survival_bonus;
-    private boolean survival_prof;
 
     private String spellCastingAbility;
     private String spellSaveDC;
@@ -179,308 +143,134 @@ public class WebCharacter {
     private String L8e;
     private String L9e;
 
-    public String getL1t() {
-        return L1t;
-    }
-
-    public void setL1t(String l1t) {
-        L1t = l1t;
-    }
-
-    public String getL2t() {
-        return L2t;
-    }
-
-    public void setL2t(String l2t) {
-        L2t = l2t;
-    }
-
-    public String getL3t() {
-        return L3t;
-    }
-
-    public void setL3t(String l3t) {
-        L3t = l3t;
-    }
-
-    public String getL4t() {
-        return L4t;
-    }
-
-    public void setL4t(String l4t) {
-        L4t = l4t;
-    }
-
-    public String getL5t() {
-        return L5t;
-    }
-
-    public void setL5t(String l5t) {
-        L5t = l5t;
-    }
-
-    public String getL6t() {
-        return L6t;
-    }
-
-    public void setL6t(String l6t) {
-        L6t = l6t;
-    }
-
-    public String getL7t() {
-        return L7t;
-    }
-
-    public void setL7t(String l7t) {
-        L7t = l7t;
-    }
-
-    public String getL8t() {
-        return L8t;
-    }
-
-    public void setL8t(String l8t) {
-        L8t = l8t;
-    }
-
-    public String getL9t() {
-        return L9t;
-    }
-
-    public void setL9t(String l9t) {
-        L9t = l9t;
-    }
-
-    public String getL1e() {
-        return L1e;
-    }
-
-    public void setL1e(String l1e) {
-        L1e = l1e;
-    }
-
-    public String getL2e() {
-        return L2e;
-    }
-
-    public void setL2e(String l2e) {
-        L2e = l2e;
-    }
-
-    public String getL3e() {
-        return L3e;
-    }
-
-    public void setL3e(String l3e) {
-        L3e = l3e;
-    }
-
-    public String getL4e() {
-        return L4e;
-    }
-
-    public void setL4e(String l4e) {
-        L4e = l4e;
-    }
-
-    public String getL5e() {
-        return L5e;
-    }
-
-    public void setL5e(String l5e) {
-        L5e = l5e;
-    }
-
-    public String getL6e() {
-        return L6e;
-    }
-
-    public void setL6e(String l6e) {
-        L6e = l6e;
-    }
-
-    public String getL7e() {
-        return L7e;
-    }
-
-    public void setL7e(String l7e) {
-        L7e = l7e;
-    }
-
-    public String getL8e() {
-        return L8e;
-    }
-
-    public void setL8e(String l8e) {
-        L8e = l8e;
-    }
-
-    public String getL9e() {
-        return L9e;
-    }
+    private String encumberance;
 
-    public void setL9e(String l9e) {
-        L9e = l9e;
-    }
-
-    public String getSpellCastingAbility() {
-        return spellCastingAbility;
-    }
-
-    public void setSpellCastingAbility(String spellCastingAbility) {
-        this.spellCastingAbility = spellCastingAbility;
-    }
-
-    public String getSpellSaveDC() {
-        return spellSaveDC;
-    }
-
-    public List<SpellRow> getCantripRows() {
-        return cantripRows;
-    }
-
-    public void setCantripRows(List<SpellRow> cantripRows) {
-        this.cantripRows = cantripRows;
-    }
-
-    public List<SpellRow> getS1Rows() {
-        return s1Rows;
-    }
-
-    public void setS1Rows(List<SpellRow> s1Rows) {
-        this.s1Rows = s1Rows;
-    }
-
-    public List<SpellRow> getS2Rows() {
-        return s2Rows;
-    }
-
-    public void setS2Rows(List<SpellRow> s2Rows) {
-        this.s2Rows = s2Rows;
-    }
-
-    public List<SpellRow> getS3Rows() {
-        return s3Rows;
-    }
+    //Esper
+    private boolean mastery6;
+    private boolean mastery6used;
+    private boolean mastery7;
+    private boolean mastery7used;
+    private boolean mastery8;
+    private boolean mastery8used;
+    private boolean mastery9;
+    private boolean mastery9used;
 
-    public void setS3Rows(List<SpellRow> s3Rows) {
-        this.s3Rows = s3Rows;
-    }
-
-    public List<SpellRow> getS4Rows() {
-        return s4Rows;
-    }
+    private String slotsUsed;
+    private String talentPoints;
+    private String talentPointsMax;
+    private String slotRank;
+    private String slotsMax;
 
-    public void setS4Rows(List<SpellRow> s4Rows) {
-        this.s4Rows = s4Rows;
+    public String getSlotsMax() {
+        return slotsMax;
     }
 
-    public List<SpellRow> getS5Rows() {
-        return s5Rows;
+    public void setSlotsMax(String slotsMax) {
+        this.slotsMax = slotsMax;
     }
 
-    public void setS5Rows(List<SpellRow> s5Rows) {
-        this.s5Rows = s5Rows;
+    public boolean isMastery6() {
+        return mastery6;
     }
 
-    public List<SpellRow> getS6Rows() {
-        return s6Rows;
+    public void setMastery6(boolean mastery6) {
+        this.mastery6 = mastery6;
     }
 
-    public void setS6Rows(List<SpellRow> s6Rows) {
-        this.s6Rows = s6Rows;
+    public boolean isMastery6used() {
+        return mastery6used;
     }
 
-    public List<SpellRow> getS7Rows() {
-        return s7Rows;
+    public void setMastery6used(boolean mastery6used) {
+        this.mastery6used = mastery6used;
     }
 
-    public void setS7Rows(List<SpellRow> s7Rows) {
-        this.s7Rows = s7Rows;
+    public boolean isMastery7() {
+        return mastery7;
     }
 
-    public List<SpellRow> getS8Rows() {
-        return s8Rows;
+    public void setMastery7(boolean mastery7) {
+        this.mastery7 = mastery7;
     }
 
-    public void setS8Rows(List<SpellRow> s8Rows) {
-        this.s8Rows = s8Rows;
+    public boolean isMastery7used() {
+        return mastery7used;
     }
 
-    public List<SpellRow> getS9Rows() {
-        return s9Rows;
+    public void setMastery7used(boolean mastery7used) {
+        this.mastery7used = mastery7used;
     }
 
-    public void setS9Rows(List<SpellRow> s9Rows) {
-        this.s9Rows = s9Rows;
+    public boolean isMastery8() {
+        return mastery8;
     }
 
-    public void setSpellSaveDC(String spellSaveDC) {
-        this.spellSaveDC = spellSaveDC;
+    public void setMastery8(boolean mastery8) {
+        this.mastery8 = mastery8;
     }
 
-    public String getSpellAttackBonus() {
-        return spellAttackBonus;
+    public boolean isMastery8used() {
+        return mastery8used;
     }
 
-    public void setSpellAttackBonus(String spellAttackBonus) {
-        this.spellAttackBonus = spellAttackBonus;
+    public void setMastery8used(boolean mastery8used) {
+        this.mastery8used = mastery8used;
     }
 
-    public String getBackstory() {
-        return backstory;
+    public boolean isMastery9() {
+        return mastery9;
     }
 
-    public void setBackstory(String backstory) {
-        this.backstory = backstory;
+    public void setMastery9(boolean mastery9) {
+        this.mastery9 = mastery9;
     }
 
-    public String getPersonalityTraits() {
-        return personalityTraits;
+    public boolean isMastery9used() {
+        return mastery9used;
     }
 
-    public void setPersonalityTraits(String personalityTraits) {
-        this.personalityTraits = personalityTraits;
+    public void setMastery9used(boolean mastery9used) {
+        this.mastery9used = mastery9used;
     }
 
-    public String getBonds() {
-        return bonds;
+    public String getSlotsUsed() {
+        return slotsUsed;
     }
 
-    public void setBonds(String bonds) {
-        this.bonds = bonds;
+    public void setSlotsUsed(String slotsUsed) {
+        this.slotsUsed = slotsUsed;
     }
 
-    public String getFlaws() {
-        return flaws;
+    public String getTalentPoints() {
+        return talentPoints;
     }
 
-    public void setFlaws(String flaws) {
-        this.flaws = flaws;
+    public void setTalentPoints(String talentPoints) {
+        this.talentPoints = talentPoints;
     }
 
-    public String getIdeals() {
-        return ideals;
+    public String getTalentPointsMax() {
+        return talentPointsMax;
     }
 
-    public void setIdeals(String ideals) {
-        this.ideals = ideals;
+    public void setTalentPointsMax(String talentPointsMax) {
+        this.talentPointsMax = talentPointsMax;
     }
 
-    public String getTotalWeight() {
-        return totalWeight;
+    public String getSlotRank() {
+        return slotRank;
     }
 
-    public void setTotalWeight(String totalWeight) {
-        this.totalWeight = totalWeight;
+    public void setSlotRank(String slotRank) {
+        this.slotRank = slotRank;
     }
 
-    public String getPassiveWisdom() {
-        return passiveWisdom;
+    public String getSheetType() {
+        return sheetType;
     }
 
-    public void setPassiveWisdom(String passiveWisdom) {
-        this.passiveWisdom = passiveWisdom;
+    public void setSheetType(String sheetType) {
+        this.sheetType = sheetType;
     }
 
     public String getId() {
@@ -691,6 +481,46 @@ public class WebCharacter {
         this.treasure = treasure;
     }
 
+    public String getBackstory() {
+        return backstory;
+    }
+
+    public void setBackstory(String backstory) {
+        this.backstory = backstory;
+    }
+
+    public String getPersonalityTraits() {
+        return personalityTraits;
+    }
+
+    public void setPersonalityTraits(String personalityTraits) {
+        this.personalityTraits = personalityTraits;
+    }
+
+    public String getBonds() {
+        return bonds;
+    }
+
+    public void setBonds(String bonds) {
+        this.bonds = bonds;
+    }
+
+    public String getFlaws() {
+        return flaws;
+    }
+
+    public void setFlaws(String flaws) {
+        this.flaws = flaws;
+    }
+
+    public String getIdeals() {
+        return ideals;
+    }
+
+    public void setIdeals(String ideals) {
+        this.ideals = ideals;
+    }
+
     public String getAge() {
         return age;
     }
@@ -787,6 +617,22 @@ public class WebCharacter {
         this.experience = experience;
     }
 
+    public String getPassiveWisdom() {
+        return passiveWisdom;
+    }
+
+    public void setPassiveWisdom(String passiveWisdom) {
+        this.passiveWisdom = passiveWisdom;
+    }
+
+    public String getTotalWeight() {
+        return totalWeight;
+    }
+
+    public void setTotalWeight(String totalWeight) {
+        this.totalWeight = totalWeight;
+    }
+
     public List<AttackRow> getAttackRows() {
         return attackRows;
     }
@@ -841,6 +687,94 @@ public class WebCharacter {
 
     public void setDamageModRows(List<DamageModRow> damageModRows) {
         this.damageModRows = damageModRows;
+    }
+
+    public List<SpellRow> getCantripRows() {
+        return cantripRows;
+    }
+
+    public void setCantripRows(List<SpellRow> cantripRows) {
+        this.cantripRows = cantripRows;
+    }
+
+    public List<SpellRow> getS1Rows() {
+        return s1Rows;
+    }
+
+    public void setS1Rows(List<SpellRow> s1Rows) {
+        this.s1Rows = s1Rows;
+    }
+
+    public List<SpellRow> getS2Rows() {
+        return s2Rows;
+    }
+
+    public void setS2Rows(List<SpellRow> s2Rows) {
+        this.s2Rows = s2Rows;
+    }
+
+    public List<SpellRow> getS3Rows() {
+        return s3Rows;
+    }
+
+    public void setS3Rows(List<SpellRow> s3Rows) {
+        this.s3Rows = s3Rows;
+    }
+
+    public List<SpellRow> getS4Rows() {
+        return s4Rows;
+    }
+
+    public void setS4Rows(List<SpellRow> s4Rows) {
+        this.s4Rows = s4Rows;
+    }
+
+    public List<SpellRow> getS5Rows() {
+        return s5Rows;
+    }
+
+    public void setS5Rows(List<SpellRow> s5Rows) {
+        this.s5Rows = s5Rows;
+    }
+
+    public List<SpellRow> getS6Rows() {
+        return s6Rows;
+    }
+
+    public void setS6Rows(List<SpellRow> s6Rows) {
+        this.s6Rows = s6Rows;
+    }
+
+    public List<SpellRow> getS7Rows() {
+        return s7Rows;
+    }
+
+    public void setS7Rows(List<SpellRow> s7Rows) {
+        this.s7Rows = s7Rows;
+    }
+
+    public List<SpellRow> getS8Rows() {
+        return s8Rows;
+    }
+
+    public void setS8Rows(List<SpellRow> s8Rows) {
+        this.s8Rows = s8Rows;
+    }
+
+    public List<SpellRow> getS9Rows() {
+        return s9Rows;
+    }
+
+    public void setS9Rows(List<SpellRow> s9Rows) {
+        this.s9Rows = s9Rows;
+    }
+
+    public List<BonusProfRow> getBonusProfRows() {
+        return bonusProfRows;
+    }
+
+    public void setBonusProfRows(List<BonusProfRow> bonusProfRows) {
+        this.bonusProfRows = bonusProfRows;
     }
 
     public String getStrength() {
@@ -1051,291 +985,179 @@ public class WebCharacter {
         this.charisma_save_prof = charisma_save_prof;
     }
 
-    public String getAcrobatics_bonus() {
-        return acrobatics_bonus;
+    public String getSpellCastingAbility() {
+        return spellCastingAbility;
     }
 
-    public void setAcrobatics_bonus(String acrobatics_bonus) {
-        this.acrobatics_bonus = acrobatics_bonus;
+    public void setSpellCastingAbility(String spellCastingAbility) {
+        this.spellCastingAbility = spellCastingAbility;
     }
 
-    public boolean isAcrobatics_prof() {
-        return acrobatics_prof;
+    public String getSpellSaveDC() {
+        return spellSaveDC;
     }
 
-    public void setAcrobatics_prof(boolean acrobatics_prof) {
-        this.acrobatics_prof = acrobatics_prof;
+    public void setSpellSaveDC(String spellSaveDC) {
+        this.spellSaveDC = spellSaveDC;
     }
 
-    public String getAnimal_handling_bonus() {
-        return animal_handling_bonus;
+    public String getSpellAttackBonus() {
+        return spellAttackBonus;
     }
 
-    public void setAnimal_handling_bonus(String animal_handling_bonus) {
-        this.animal_handling_bonus = animal_handling_bonus;
+    public void setSpellAttackBonus(String spellAttackBonus) {
+        this.spellAttackBonus = spellAttackBonus;
     }
 
-    public boolean isAnimal_handling_prof() {
-        return animal_handling_prof;
+    public String getL1t() {
+        return L1t;
     }
 
-    public void setAnimal_handling_prof(boolean animal_handling_prof) {
-        this.animal_handling_prof = animal_handling_prof;
+    public void setL1t(String l1t) {
+        L1t = l1t;
     }
 
-    public String getArcana_bonus() {
-        return arcana_bonus;
+    public String getL2t() {
+        return L2t;
     }
 
-    public void setArcana_bonus(String arcana_bonus) {
-        this.arcana_bonus = arcana_bonus;
+    public void setL2t(String l2t) {
+        L2t = l2t;
     }
 
-    public boolean isArcana_prof() {
-        return arcana_prof;
+    public String getL3t() {
+        return L3t;
     }
 
-    public void setArcana_prof(boolean arcana_prof) {
-        this.arcana_prof = arcana_prof;
+    public void setL3t(String l3t) {
+        L3t = l3t;
     }
 
-    public String getAthletics_bonus() {
-        return athletics_bonus;
+    public String getL4t() {
+        return L4t;
     }
 
-    public void setAthletics_bonus(String athletics_bonus) {
-        this.athletics_bonus = athletics_bonus;
+    public void setL4t(String l4t) {
+        L4t = l4t;
     }
 
-    public boolean isAthletics_prof() {
-        return athletics_prof;
+    public String getL5t() {
+        return L5t;
     }
 
-    public void setAthletics_prof(boolean athletics_prof) {
-        this.athletics_prof = athletics_prof;
+    public void setL5t(String l5t) {
+        L5t = l5t;
     }
 
-    public String getDeception_bonus() {
-        return deception_bonus;
+    public String getL6t() {
+        return L6t;
     }
 
-    public void setDeception_bonus(String deception_bonus) {
-        this.deception_bonus = deception_bonus;
+    public void setL6t(String l6t) {
+        L6t = l6t;
     }
 
-    public boolean isDeception_prof() {
-        return deception_prof;
+    public String getL7t() {
+        return L7t;
     }
 
-    public void setDeception_prof(boolean deception_prof) {
-        this.deception_prof = deception_prof;
+    public void setL7t(String l7t) {
+        L7t = l7t;
     }
 
-    public String getHistory_bonus() {
-        return history_bonus;
+    public String getL8t() {
+        return L8t;
     }
 
-    public void setHistory_bonus(String history_bonus) {
-        this.history_bonus = history_bonus;
+    public void setL8t(String l8t) {
+        L8t = l8t;
     }
 
-    public boolean isHistory_prof() {
-        return history_prof;
+    public String getL9t() {
+        return L9t;
     }
 
-    public void setHistory_prof(boolean history_prof) {
-        this.history_prof = history_prof;
+    public void setL9t(String l9t) {
+        L9t = l9t;
     }
 
-    public String getInsight_bonus() {
-        return insight_bonus;
+    public String getL1e() {
+        return L1e;
     }
 
-    public void setInsight_bonus(String insight_bonus) {
-        this.insight_bonus = insight_bonus;
+    public void setL1e(String l1e) {
+        L1e = l1e;
     }
 
-    public boolean isInsight_prof() {
-        return insight_prof;
+    public String getL2e() {
+        return L2e;
     }
 
-    public void setInsight_prof(boolean insight_prof) {
-        this.insight_prof = insight_prof;
+    public void setL2e(String l2e) {
+        L2e = l2e;
     }
 
-    public String getIntimidation_bonus() {
-        return intimidation_bonus;
+    public String getL3e() {
+        return L3e;
     }
 
-    public void setIntimidation_bonus(String intimidation_bonus) {
-        this.intimidation_bonus = intimidation_bonus;
+    public void setL3e(String l3e) {
+        L3e = l3e;
     }
 
-    public boolean isIntimidation_prof() {
-        return intimidation_prof;
+    public String getL4e() {
+        return L4e;
     }
 
-    public void setIntimidation_prof(boolean intimidation_prof) {
-        this.intimidation_prof = intimidation_prof;
+    public void setL4e(String l4e) {
+        L4e = l4e;
     }
 
-    public String getInvestigation_bonus() {
-        return investigation_bonus;
+    public String getL5e() {
+        return L5e;
     }
 
-    public void setInvestigation_bonus(String investigation_bonus) {
-        this.investigation_bonus = investigation_bonus;
+    public void setL5e(String l5e) {
+        L5e = l5e;
     }
 
-    public boolean isInvestigation_prof() {
-        return investigation_prof;
+    public String getL6e() {
+        return L6e;
     }
 
-    public void setInvestigation_prof(boolean investigation_prof) {
-        this.investigation_prof = investigation_prof;
+    public void setL6e(String l6e) {
+        L6e = l6e;
     }
 
-    public String getMedicine_bonus() {
-        return medicine_bonus;
+    public String getL7e() {
+        return L7e;
     }
 
-    public void setMedicine_bonus(String medicine_bonus) {
-        this.medicine_bonus = medicine_bonus;
+    public void setL7e(String l7e) {
+        L7e = l7e;
     }
 
-    public boolean isMedicine_prof() {
-        return medicine_prof;
+    public String getL8e() {
+        return L8e;
     }
 
-    public void setMedicine_prof(boolean medicine_prof) {
-        this.medicine_prof = medicine_prof;
+    public void setL8e(String l8e) {
+        L8e = l8e;
     }
 
-    public String getNature_bonus() {
-        return nature_bonus;
+    public String getL9e() {
+        return L9e;
     }
 
-    public void setNature_bonus(String nature_bonus) {
-        this.nature_bonus = nature_bonus;
+    public void setL9e(String l9e) {
+        L9e = l9e;
     }
 
-    public boolean isNature_prof() {
-        return nature_prof;
+    public String getEncumberance() {
+        return encumberance;
     }
 
-    public void setNature_prof(boolean nature_prof) {
-        this.nature_prof = nature_prof;
-    }
-
-    public String getPerception_bonus() {
-        return perception_bonus;
-    }
-
-    public void setPerception_bonus(String perception_bonus) {
-        this.perception_bonus = perception_bonus;
-    }
-
-    public boolean isPerception_prof() {
-        return perception_prof;
-    }
-
-    public void setPerception_prof(boolean perception_prof) {
-        this.perception_prof = perception_prof;
-    }
-
-    public String getPerformance_bonus() {
-        return performance_bonus;
-    }
-
-    public void setPerformance_bonus(String performance_bonus) {
-        this.performance_bonus = performance_bonus;
-    }
-
-    public boolean isPerformance_prof() {
-        return performance_prof;
-    }
-
-    public void setPerformance_prof(boolean performance_prof) {
-        this.performance_prof = performance_prof;
-    }
-
-    public String getPersuasion_bonus() {
-        return persuasion_bonus;
-    }
-
-    public void setPersuasion_bonus(String persuasion_bonus) {
-        this.persuasion_bonus = persuasion_bonus;
-    }
-
-    public boolean isPersuasion_prof() {
-        return persuasion_prof;
-    }
-
-    public void setPersuasion_prof(boolean persuasion_prof) {
-        this.persuasion_prof = persuasion_prof;
-    }
-
-    public String getReligion_bonus() {
-        return religion_bonus;
-    }
-
-    public void setReligion_bonus(String religion_bonus) {
-        this.religion_bonus = religion_bonus;
-    }
-
-    public boolean isReligion_prof() {
-        return religion_prof;
-    }
-
-    public void setReligion_prof(boolean religion_prof) {
-        this.religion_prof = religion_prof;
-    }
-
-    public String getSleight_of_hand_bonus() {
-        return sleight_of_hand_bonus;
-    }
-
-    public void setSleight_of_hand_bonus(String sleight_of_hand_bonus) {
-        this.sleight_of_hand_bonus = sleight_of_hand_bonus;
-    }
-
-    public boolean isSleight_of_hand_prof() {
-        return sleight_of_hand_prof;
-    }
-
-    public void setSleight_of_hand_prof(boolean sleight_of_hand_prof) {
-        this.sleight_of_hand_prof = sleight_of_hand_prof;
-    }
-
-    public String getStealth_bonus() {
-        return stealth_bonus;
-    }
-
-    public void setStealth_bonus(String stealth_bonus) {
-        this.stealth_bonus = stealth_bonus;
-    }
-
-    public boolean isStealth_prof() {
-        return stealth_prof;
-    }
-
-    public void setStealth_prof(boolean stealth_prof) {
-        this.stealth_prof = stealth_prof;
-    }
-
-    public String getSurvival_bonus() {
-        return survival_bonus;
-    }
-
-    public void setSurvival_bonus(String survival_bonus) {
-        this.survival_bonus = survival_bonus;
-    }
-
-    public boolean isSurvival_prof() {
-        return survival_prof;
-    }
-
-    public void setSurvival_prof(boolean survival_prof) {
-        this.survival_prof = survival_prof;
+    public void setEncumberance(String encumberance) {
+        this.encumberance = encumberance;
     }
 }

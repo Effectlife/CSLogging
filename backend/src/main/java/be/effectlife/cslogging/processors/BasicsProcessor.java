@@ -45,12 +45,12 @@ public class BasicsProcessor implements Processor {
         webCharacter.setFlaws(multiLineReplace(data.get("fl")));
         webCharacter.setIdeals(multiLineReplace(data.get("ide")));
 
-        webCharacter.setClassDisplay(multiLineReplace(data.get("cldi")));
-        webCharacter.setBackground(multiLineReplace(data.get("back")));
-        webCharacter.setRaceDisplay(multiLineReplace(data.get("rcdi")));
-        webCharacter.setAlignment(multiLineReplace(data.get("alig")));
-        webCharacter.setExperience(multiLineReplace(data.get("exp")));
-        webCharacter.setPassiveWisdom(multiLineReplace(data.get("pw")));
+        webCharacter.setClassDisplay(data.get("cldi"));
+        webCharacter.setBackground(data.get("back"));
+        webCharacter.setRaceDisplay(data.get("rcdi"));
+        webCharacter.setAlignment(data.get("alig"));
+        webCharacter.setExperience(data.get("exp"));
+        webCharacter.setPassiveWisdom(data.get("pw"));
 
         webCharacter.setDeathSaveSuccess1(bool(data, "dss1"));
         webCharacter.setDeathSaveSuccess2(bool(data, "dss2"));
@@ -71,6 +71,8 @@ public class BasicsProcessor implements Processor {
         webCharacter.setSpellAttackBonus(data.get("sab"));
         webCharacter.setSpellSaveDC(data.get("ssdc"));
 
+        webCharacter.setTotalWeight(data.get("wegt"));
+        webCharacter.setEncumberance(data.get("enc"));
 
         webCharacter.setL1t(data.get("l1t"));
         webCharacter.setL2t(data.get("l2t"));

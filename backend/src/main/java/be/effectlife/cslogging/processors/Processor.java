@@ -8,6 +8,11 @@ import java.util.Map;
 public interface Processor {
     void process(WebCharacter webCharacter, Map<String, Object> input);
 
+    default boolean bool(String value) {
+        if(value==null)return false;
+        return !value.equals("0");
+    }
+
     default boolean bool(Map<String, String> input, String attr) {
 
         Object attrval = input.get(attr);

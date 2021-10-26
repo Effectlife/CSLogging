@@ -1,8 +1,6 @@
 package be.effectlife.cslogging.processors.spells;
 
-import be.effectlife.cslogging.models.AttackRow;
-import be.effectlife.cslogging.models.WebCharacter;
-import be.effectlife.cslogging.models.spells.SpellRow;
+import be.effectlife.cslogging.models.SpellRow;
 import be.effectlife.cslogging.processors.Processor;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -13,24 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Component
 public abstract class BaseSpellProcessor implements Processor {
     private static final Logger LOG = LoggerFactory.getLogger(CantripProcessor.class);
 
-    protected List<SpellRow> prepRows(String sp, Map<String, Object> input) {
+    protected List<SpellRow> prepRows(String sp, Map<String, Object> input, String sheetType) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get(sp + "r");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get(sp + "id"); if(rowIds == null)return null;
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get(sp + "id");
+        if (rowIds == null) return null;
 
         ArrayList<SpellRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {
-            rows.add(processRow(rowList.get(rowId)));
+            rows.add(processRow(rowList.get(rowId), sheetType));
         }
         return rows;
     }
 
-    protected SpellRow processRow(Map<String, Map<String, String>> stringMapMap) {
+    protected SpellRow processRow(Map<String, Map<String, String>> stringMapMap, String sheetType) {
 
         SpellRow spellRow = new SpellRow();
         spellRow.setName(getRowValue(stringMapMap, "spellname"));
@@ -38,7 +36,17 @@ public abstract class BaseSpellProcessor implements Processor {
         if (StringUtils.isNotBlank(spellschool)) {
             spellschool = spellschool.substring(0, 1).toUpperCase(Locale.ROOT) + spellschool.substring(1).toLowerCase(Locale.ROOT);
         } else {
-            spellschool = "Abjuration";
+            switch (sheetType) {
+                case "esper":
+                    spellschool = "Alteration";
+                    break;
+                case "ame":
+                    spellschool = "Abjuration";
+                    break;
+                default:
+                    spellschool = "Abjuration";
+                    break;
+            }
         }
         spellRow.setSchool(spellschool);
         spellRow.setRitual(getRowBool(stringMapMap, "spellritual"));

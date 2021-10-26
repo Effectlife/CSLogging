@@ -33,7 +33,7 @@ public class BackendController {
     @ResponseBody
     @PostMapping(path = "/csl")
     public String csl(@RequestBody Map<Object, Object> csLoggingDTO) {
-        characterService.processCharacters((List<Map<String, Object>>) csLoggingDTO.get("characters"));
+        characterService.processCharacters(csLoggingDTO.get("csLogging").toString(), (List<Map<String, Object>>) csLoggingDTO.get("characters"));
         LOG.info("Received new Update");
         return "{}";
     }
