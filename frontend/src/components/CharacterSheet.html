@@ -43,12 +43,14 @@
                                                 <div class="hlabel-container">
                                                     <input type="text" name="attr_race_display" class="no_events"
                                                            readonly v-bind:value="ch.raceDisplay">
-                                                    <span class="label">RACE</span>
+                                                    <span class="label" v-if="ch.sheetType !=='aime'">RACE</span>
+                                                    <span class="label" v-if="ch.sheetType ==='aime'">CULTURE</span>
                                                 </div>
                                                 <div class="hlabel-container">
                                                     <input type="text" name="attr_alignment" readonly
                                                            v-bind:value="ch.alignment">
-                                                    <span class="label">ALIGNMENT</span>
+                                                    <span class="label" v-if="ch.sheetType !=='aime'">ALIGNMENT</span>
+                                                    <span class="label" v-if="ch.sheetType ==='aime'">SHADOW WEAKNESS</span>
                                                 </div>
                                                 <div class="hlabel-container" style="position: relative;">
                                                     <input type="text" name="attr_experience" readonly
@@ -138,6 +140,14 @@
                                                         <span>INSPIRATION</span>
                                                     </div>
                                                 </div>
+                                                <div class="insp-prof-container" v-if="ch.sheetType === 'aime'">
+                                                    <div class="value">
+                                                        <span name="attr_pb">{{ ch.madnessThreshold }}</span>
+                                                    </div>
+                                                    <div class="label">
+                                                        <span>MISERABLE</span>
+                                                    </div>
+                                                </div>
                                                 <div class="insp-prof-container">
                                                     <div class="value">
                                                         <span name="attr_pb">{{ ch.pb }}</span>
@@ -215,6 +225,19 @@
                                                         <p type="roll" name="roll_wisdom_save"
                                                            value="@{wisdom_save_roll}"
                                                            class="attribute-title">Wisdom
+                                                        </p>
+                                                    </div>
+                                                    <div class="saving-throw" v-if="ch.sheetType === 'aime'">
+                                                        <input type="checkbox" name="attr_corruption_prof"
+                                                               readonly onclick="this.checked=!this.checked;"
+                                                               :value="ch.corruption_prof"
+                                                               :checked="ch.corruption_prof">
+                                                        <span name="attr_corruption_bonus">{{
+                                                                ch.corruption_bonus
+                                                            }}</span>
+                                                        <p type="roll" name="roll_corruption"
+                                                           value="@{corruption_roll}"
+                                                           class="attribute-title">Corruption
                                                         </p>
                                                     </div>
                                                     <div class="saving-throw">
@@ -585,6 +608,21 @@
                                                         <p>{{ ch.pp }}</p>
                                                     </div>
                                                 </div>
+
+                                                <div class="money" v-if="ch.sheetType === 'aime'">
+                                                    <div class="coin">
+                                                        <span class="label">CP</span>
+                                                        <p>{{ ch.cp }}</p>
+                                                    </div>
+                                                    <div class="coin">
+                                                        <span class="label">SP</span>
+                                                        <p>{{ ch.sp }}</p>
+                                                    </div>
+                                                    <div class="coin">
+                                                        <span class="label">GP</span>
+                                                        <p>{{ ch.gp }}</p>
+                                                    </div>
+                                                </div>
                                                 <div class="money" v-if="ch.sheetType === 'esper'">
                                                     <div class="coin">
                                                         <span class="label" style="background-image: none; left:40px">CUBIL</span>
@@ -690,11 +728,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="weighttotal">
-                                                        <span class="label"
+                                                        <span class="label" style="margin-bottom: -3px;"
                                                         >TOTAL WEIGHT</span>
                                                         <input type="text" name="attr_weighttotal"
                                                                :value="ch.totalWeight">
-                                                        <span class="encumb over"
+                                                        <span class="encumb over" style="display: block"
                                                               data-i18n="over-carrying-cap-u">{{
                                                                 ch.encumberance
                                                             }}</span>
@@ -708,32 +746,39 @@
                                         <div class="col col3">
                                             <div class="textbox pibf">
                                                 <div class="display">
-                                                    <span name="attr_personality_traits" v-html="ch.personalityTraits">
-                                                    </span>
+                                                    <span name="attr_personality_traits" v-if="ch.sheetType !=='aime'"
+                                                          v-html="ch.personalityTraits"></span>
+                                                    <span name="attr_personality_traits" v-if="ch.sheetType ==='aime'"
+                                                          v-html="ch.distinctiveQuality"> </span>
                                                 </div>
-                                                <span class="label"
-                                                >PERSONALITY TRAITS</span>
+                                                <span class="label" v-if="ch.sheetType !=='aime'">PERSONALITY
+                                                    TRAITS</span>
+                                                <span class="label" v-if="ch.sheetType ==='aime'">DISTINCTIVE
+                                                    QUALITY</span>
                                             </div>
                                             <div class="textbox pibf">
                                                 <div class="display">
-                                                    <span name="attr_ideals" v-html="ch.ideals">
-                                                    </span>
+                                                    <span name="attr_ideals" v-if="ch.sheetType !=='aime'" v-html="ch.ideals"> </span>
+                                                    <span name="attr_personality_traits" v-if="ch.sheetType ==='aime'" v-html="ch.speciality"> </span>
                                                 </div>
-                                                <span class="label">IDEALS</span>
+                                                <span class="label" v-if="ch.sheetType !=='aime'">IDEALS</span>
+                                                <span class="label" v-if="ch.sheetType ==='aime'">SPECIALITY</span>
                                             </div>
                                             <div class="textbox pibf">
                                                 <div class="display">
-                                                    <span name="attr_bonds" v-html="ch.bonds">
-                                                    </span>
+                                                    <span name="attr_ideals" v-if="ch.sheetType !=='aime'" v-html="ch.bonds"> </span>
+                                                    <span name="attr_personality_traits" v-if="ch.sheetType ==='aime'" v-html="ch.hope"> </span>
                                                 </div>
-                                                <span class="label">BONDS</span>
+                                                <span class="label" v-if="ch.sheetType !=='aime'">BONDS</span>
+                                                <span class="label" v-if="ch.sheetType ==='aime'">HOPE</span>
                                             </div>
                                             <div class="textbox pibf">
                                                 <div class="display">
-                                                    <span name="attr_flaws" v-html="ch.flaws">
-                                                    </span>
+                                                    <span name="attr_ideals" v-if="ch.sheetType !=='aime'" v-html="ch.flaws"> </span>
+                                                    <span name="attr_personality_traits" v-if="ch.sheetType ==='aime'" v-html="ch.despair"> </span>
                                                 </div>
-                                                <span class="label">FLAWS</span>
+                                                <span class="label" v-if="ch.sheetType !=='aime'">FLAWS</span>
+                                                <span class="label" v-if="ch.sheetType ==='aime'">DESPAIR</span>
                                             </div>
                                             <div class="resources">
                                                 <div class="hdice-dsaves-container"
@@ -869,8 +914,8 @@
                                                       style="min-height: 300px; height: 300px;" readonly
                                                       v-html="ch.characterAppearance">
                                                 </span>
-                                                <span class="label"
-                                                >CHARACTER APPEARANCE</span>
+                                                <span class="label" v-if="ch.sheetType !== 'aime'">CHARACTER APPEARANCE</span>
+                                                <span class="label" v-if="ch.sheetType === 'aime'">PATRONS & SANCTUARIES</span>
                                             </div>
                                             <div class="textbox">
                                                 <span class="biotext" name="attr_character_backstory"
@@ -887,8 +932,8 @@
                                                       style="min-height: 288px; height: 300px;" readonly
                                                       v-html="ch.alliesAndOrganisations">
                                                 </span>
-                                                <span class="label"
-                                                >ALLIES &amp; ORGANIZATIONS</span>
+                                                <span class="label" v-if="ch.sheetType !== 'aime'">ALLIES &amp; ORGANIZATIONS</span>
+                                                <span class="label" v-if="ch.sheetType === 'aime'">TALE OF YEARS</span>
                                             </div>
                                             <div class="textbox">
                                                 <span class="biotext" name="attr_additional_feature_and_traits"
@@ -954,12 +999,14 @@
                                                 <div class="sheet-tp esper-border" style="margin-top: 10px">
                                                     <div class="sheet-top"><span data-i18n="tp-max-u">Talent Point
                                                         Maximum</span>
-                                                        <input type="text" name="attr_tp_max" title="@{tp_max}" readonly :value="ch.talentPointsMax">
+                                                        <input type="text" name="attr_tp_max" title="@{tp_max}" readonly
+                                                               :value="ch.talentPointsMax">
                                                     </div>
-                                                    <input type="number" name="attr_tp" title="@{tp}" readonly :value="ch.talentPoints">
+                                                    <input type="number" name="attr_tp" title="@{tp}" readonly
+                                                           :value="ch.talentPoints">
                                                     <span
-                                                        class="sheet-label" data-i18n="tp-current-u"
-                                                        style="margin-top: 20px">TALENT POINTS REMAINING</span>
+                                                            class="sheet-label" data-i18n="tp-current-u"
+                                                            style="margin-top: 20px">TALENT POINTS REMAINING</span>
                                                 </div>
                                             </div>
                                             <div class="col col2"><span class="sheet-label"
@@ -970,21 +1017,24 @@
                                                     <div class="sheet-subcontainer esper-border-half">
                                                         <div class="sheet-top"><span data-i18n="max-rank-u">Rank</span>
                                                             <input type="text" name="attr_slot_rank_max"
-                                                                   title="@{slot_rank_max}" readonly :value="ch.slotRank">
+                                                                   title="@{slot_rank_max}" readonly
+                                                                   :value="ch.slotRank">
                                                         </div>
                                                         <input type="number" name="attr_slots_max"
-                                                               title="@{talent_slots}" style="margin-bottom: -6px" readonly :value="ch.slotsMax">
+                                                               title="@{talent_slots}" style="margin-bottom: -6px"
+                                                               readonly :value="ch.slotsMax">
                                                         <span
-                                                            class="sheet-label" data-i18n="talent-slots-u"
-                                                            style="margin-top: 6px">MAX TALENT SLOTS</span>
+                                                                class="sheet-label" data-i18n="talent-slots-u"
+                                                                style="margin-top: 6px">MAX TALENT SLOTS</span>
                                                     </div>
                                                     <div class="sheet-subcontainer esper-border-half">
                                                         <div class="sheet-speed">
                                                             <input type="number" name="attr_slots_used"
-                                                                   title="@{slots_used}" style="margin-top: 20px" readonly :value="ch.slotsUsed">
+                                                                   title="@{slots_used}" style="margin-top: 20px"
+                                                                   readonly :value="ch.slotsUsed">
                                                             <span
-                                                                class="sheet-label" data-i18n="used-talent-slots"
-                                                                style="margin-top: 6px">SLOTS REMAINING</span>
+                                                                    class="sheet-label" data-i18n="used-talent-slots"
+                                                                    style="margin-top: 6px">SLOTS REMAINING</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -997,48 +1047,56 @@
                                                             data-i18n="em_used">Used</span></div>
                                                     <div class="sheet-column"><span>6th</span>
                                                         <div class="sheet-sub-button">
-                                                            <input type="checkbox" name="attr_mastery_6th" value="1" :value="ch.mastery6"
+                                                            <input type="checkbox" name="attr_mastery_6th" value="1"
+                                                                   :value="ch.mastery6"
                                                                    :checked="ch.mastery6"
                                                                    readonly
                                                                    onclick="this.checked=!this.checked;">
                                                         </div>
-                                                        <input type="checkbox" name="attr_mastery_6th_used" value="1" :value="ch.mastery6used"
+                                                        <input type="checkbox" name="attr_mastery_6th_used" value="1"
+                                                               :value="ch.mastery6used"
                                                                :checked="ch.mastery6used"
                                                                readonly
                                                                onclick="this.checked=!this.checked;">
                                                     </div>
                                                     <div class="sheet-column"><span>7th</span>
                                                         <div class="sheet-sub-button">
-                                                            <input type="checkbox" name="attr_mastery_7th" value="1" :value="ch.mastery7"
+                                                            <input type="checkbox" name="attr_mastery_7th" value="1"
+                                                                   :value="ch.mastery7"
                                                                    :checked="ch.mastery7"
                                                                    readonly
                                                                    onclick="this.checked=!this.checked;">
                                                         </div>
-                                                        <input type="checkbox" name="attr_mastery_7th_used" value="1" :value="ch.mastery7used"
+                                                        <input type="checkbox" name="attr_mastery_7th_used" value="1"
+                                                               :value="ch.mastery7used"
                                                                :checked="ch.mastery7used"
                                                                readonly
                                                                onclick="this.checked=!this.checked;">
                                                     </div>
                                                     <div class="sheet-column"><span>8th</span>
                                                         <div class="sheet-sub-button">
-                                                            <input type="checkbox" name="attr_mastery_8th" value="1" :value="ch.mastery8"
+                                                            <input type="checkbox" name="attr_mastery_8th" value="1"
+                                                                   :value="ch.mastery8"
                                                                    :checked="ch.mastery8"
                                                                    readonly
                                                                    onclick="this.checked=!this.checked;">
                                                         </div>
-                                                        <input type="checkbox" name="attr_mastery_8th_used" value="1" :value="ch.mastery8used"
+                                                        <input type="checkbox" name="attr_mastery_8th_used" value="1"
+                                                               :value="ch.mastery8used"
                                                                :checked="ch.mastery8used"
                                                                readonly
                                                                onclick="this.checked=!this.checked;">
                                                     </div>
                                                     <div class="sheet-column"><span>9th</span>
                                                         <div class="sheet-sub-button">
-                                                            <input type="checkbox" name="attr_mastery_9th" value="1" :value="ch.mastery9"
+                                                            <input type="checkbox" name="attr_mastery_9th" value="1"
+                                                                   :value="ch.mastery9"
                                                                    :checked="ch.mastery9"
                                                                    readonly
                                                                    onclick="this.checked=!this.checked;">
                                                         </div>
-                                                        <input type="checkbox" name="attr_mastery_9th_used" value="1" :value="ch.mastery9used"
+                                                        <input type="checkbox" name="attr_mastery_9th_used" value="1"
+                                                               :value="ch.mastery9used"
                                                                :checked="ch.mastery9used"
                                                                readonly
                                                                onclick="this.checked=!this.checked;">
@@ -1049,7 +1107,8 @@
                                                 </div>
                                             </div>
                                             <div class="sheet-col sheet-col-full">
-                                                <div class="sheet-spell-header"><span data-i18n="esper-powers-u" style="text-align: start !important">ESPER
+                                                <div class="sheet-spell-header"><span data-i18n="esper-powers-u"
+                                                                                      style="text-align: start !important">ESPER
                                                     POWERS</span></div>
                                             </div>
                                         </div>

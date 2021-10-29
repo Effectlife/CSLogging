@@ -161,6 +161,89 @@ public class WebCharacter {
     private String slotRank;
     private String slotsMax;
 
+    //Ame
+    private String corruption_bonus;
+    private boolean corruption_prof;
+    private String madnessThreshold;
+    private String taleOfYears;
+    private String patronsSanctuaries;
+    private String distinctiveQuality;
+    private String speciality;
+    private String hope;
+    private String despair;
+
+    public String getDistinctiveQuality() {
+        return distinctiveQuality;
+    }
+
+    public void setDistinctiveQuality(String distinctiveQuality) {
+        this.distinctiveQuality = distinctiveQuality;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getHope() {
+        return hope;
+    }
+
+    public void setHope(String hope) {
+        this.hope = hope;
+    }
+
+    public String getDespair() {
+        return despair;
+    }
+
+    public void setDespair(String despair) {
+        this.despair = despair;
+    }
+
+    public String getTaleOfYears() {
+        return taleOfYears;
+    }
+
+    public void setTaleOfYears(String taleOfYears) {
+        this.taleOfYears = taleOfYears;
+    }
+
+    public String getPatronsSanctuaries() {
+        return patronsSanctuaries;
+    }
+
+    public void setPatronsSanctuaries(String patronsSanctuaries) {
+        this.patronsSanctuaries = patronsSanctuaries;
+    }
+
+    public String getMadnessThreshold() {
+        return madnessThreshold;
+    }
+
+    public void setMadnessThreshold(String madnessThreshold) {
+        this.madnessThreshold = madnessThreshold;
+    }
+
+    public String getCorruption_bonus() {
+        return corruption_bonus;
+    }
+
+    public void setCorruption_bonus(String corruption_bonus) {
+        this.corruption_bonus = corruption_bonus;
+    }
+
+    public boolean isCorruption_prof() {
+        return corruption_prof;
+    }
+
+    public void setCorruption_prof(boolean corruption_prof) {
+        this.corruption_prof = corruption_prof;
+    }
+
     public String getSlotsMax() {
         return slotsMax;
     }

@@ -71,6 +71,8 @@ public class CharacterService {
     private Spell9Processor spell9Processor;
     @Autowired
     private EsperProcessor esperProcessor;
+    @Autowired
+    private AimeProcessor ameProcessor;
 
     @PostConstruct
     public void listify() {
@@ -94,7 +96,7 @@ public class CharacterService {
         processors.add(spell7Processor);
         processors.add(spell8Processor);
         processors.add(spell9Processor);
-        processors.add(esperProcessor);
+
     }
 
     public List<WebCharacter> getAllCharacters() {
@@ -118,6 +120,8 @@ public class CharacterService {
         for (Processor processor : processors) {
             processor.process(webCharacter, characterData);
         }
+        if (sheetType.equals("esper")) esperProcessor.process(webCharacter, characterData);
+        if (sheetType.equals("aime")) ameProcessor.process(webCharacter, characterData);
         return webCharacter;
     }
 
