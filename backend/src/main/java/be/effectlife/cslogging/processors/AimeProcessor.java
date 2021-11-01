@@ -36,13 +36,15 @@ public class AimeProcessor implements Processor {
         webCharacter.setSpeciality(multiLineReplace(data.get("spec")));
         webCharacter.setHope(multiLineReplace(data.get("hope")));
         webCharacter.setDespair(multiLineReplace(data.get("desp")));
-
-        int cr = Integer.parseInt(data.get("cr"));
-        int crm = Integer.parseInt(data.get("crm"));
-        int w = Integer.parseInt(data.get("wis"));
-        int madnessValue = (((abs(cr + crm - w)) + (cr + crm - w)) / 2);
-
-        webCharacter.setMadnessThreshold(madnessValue + "");
+        try {
+            int cr = Integer.parseInt(data.get("cr"));
+            int crm = Integer.parseInt(data.get("crm"));
+            int w = Integer.parseInt(data.get("wis"));
+            int madnessValue = (((abs(cr + crm - w)) + (cr + crm - w)) / 2);
+            webCharacter.setMadnessThreshold(madnessValue + "");
+        }catch (Exception e){
+            LOG.warn("Cannot calculate Madness due to missing values");
+        }
         webCharacter.setClassDisplay(data.get("cldi") + " "+data.get("cllv"));
 
 
