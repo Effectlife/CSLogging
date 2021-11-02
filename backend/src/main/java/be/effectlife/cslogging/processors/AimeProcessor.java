@@ -5,11 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +20,9 @@ public class AimeProcessor implements Processor {
         Map<String, String> data = new HashMap<>();
         input.forEach((k, v) -> {
             String val = "";
-            if (v != null) val = v.toString();
+            if (v != null) {
+                val = v.toString().startsWith(webCharacter.getName() + "|") ? "?" : v.toString();
+            }
             data.put(k, val);
         });
 
@@ -42,10 +39,10 @@ public class AimeProcessor implements Processor {
             int w = Integer.parseInt(data.get("wis"));
             int madnessValue = (((abs(cr + crm - w)) + (cr + crm - w)) / 2);
             webCharacter.setMadnessThreshold(madnessValue + "");
-        }catch (Exception e){
+        } catch (Exception e) {
             LOG.warn("Cannot calculate Madness due to missing values");
         }
-        webCharacter.setClassDisplay(data.get("cldi") + " "+data.get("cllv"));
+        webCharacter.setClassDisplay(data.get("cldi") + " " + data.get("cllv"));
 
 
     }

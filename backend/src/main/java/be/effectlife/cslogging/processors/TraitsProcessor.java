@@ -13,7 +13,8 @@ public class TraitsProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("trr");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("trid"); if(rowIds == null)return;
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("trid");
+        if (rowIds == null) return;
 
         ArrayList<TraitRow> rows = new ArrayList<>();
         for (String rowId : rowIds) {

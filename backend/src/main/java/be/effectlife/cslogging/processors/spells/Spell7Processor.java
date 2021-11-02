@@ -18,5 +18,4 @@ public class Spell7Processor extends BaseSpellProcessor {
     }
 
 
-
 }

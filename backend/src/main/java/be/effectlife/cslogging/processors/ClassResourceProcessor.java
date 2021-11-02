@@ -14,11 +14,14 @@ public class ClassResourceProcessor implements Processor {
     @Override
     public void process(WebCharacter webCharacter, Map<String, Object> input) {
         final Map<String, Map<String, Map<String, String>>> rowList = (Map<String, Map<String, Map<String, String>>>) input.get("rer");
-        final ArrayList<String> rowIds = (ArrayList<String>) input.get("reid"); if(rowIds == null)return;
+        final ArrayList<String> rowIds = (ArrayList<String>) input.get("reid");
+        if (rowIds == null) return;
         Map<String, String> data = new HashMap<>();
         input.forEach((k, v) -> {
             String val = "";
-            if (v != null) val = v.toString();
+            if (v != null) {
+                val = v.toString().startsWith(webCharacter.getName() + "|") ? "?" : v.toString();
+            }
             data.put(k, val);
         });
         ArrayList<ClassResourceRow> rows = new ArrayList<>();

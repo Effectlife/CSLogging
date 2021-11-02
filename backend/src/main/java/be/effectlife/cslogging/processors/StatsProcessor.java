@@ -14,7 +14,9 @@ public class StatsProcessor implements Processor {
         Map<String, String> data = new HashMap<>();
         input.forEach((k, v) -> {
             String val = "";
-            if (v != null) val = v.toString();
+            if (v != null) {
+                val = v.toString().startsWith(webCharacter.getName() + "|") ? "?" : v.toString();
+            }
             data.put(k, val);
         });
         webCharacter.setStrength(data.get("str"));

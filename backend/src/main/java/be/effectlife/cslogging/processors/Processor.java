@@ -9,7 +9,7 @@ public interface Processor {
     void process(WebCharacter webCharacter, Map<String, Object> input);
 
     default boolean bool(String value) {
-        if(value==null)return false;
+        if (value == null) return false;
         return !value.equals("0");
     }
 
