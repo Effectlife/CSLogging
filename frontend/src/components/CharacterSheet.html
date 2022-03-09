@@ -14,7 +14,7 @@
                                 <input class="tab-button bio" name="attr_tab" type="radio" value="bio">
                                 <span
                                 >BIO</span>
-                                <input class="tab-button spells" name="attr_tab" type="radio" value="spells">
+                                <input class="tab-button spells" name="attr_tab" type="radio" value="spells" v-if="ch.sheetType !=='aime'">
                                 <span v-if="ch.sheetType === 'default'">SPELLS</span>
                                 <span v-if="ch.sheetType === 'esper'">POWERS</span>
                                 <div class="page core">
@@ -855,8 +855,8 @@
                                         </div>
                                     </div> <!-- This is hide -->
                                 </div>
-                                <div class="page bio" @click="toggleAccMain">
-                                    <div class="header"> <!-- This is click -->
+                                <div class="page bio" >
+                                    <div class="header" @click="toggleAccMain"> <!-- This is click -->
                                         <div class="name-container">
                                             <img src="https://app.roll20.net/images/dndstyling/srd5_360.png"
                                                  style="padding-bottom: 5px;"
@@ -952,7 +952,7 @@
                                         </div>
                                     </div> <!-- This is hide -->
                                 </div>
-                                <div class="page spells" @click="toggleAccMain">
+                                <div class="page spells" @click="toggleAccMain" v-if="ch.sheetType !=='aime'">
                                     <div class="header"> <!-- This is click -->
                                         <div class="name-container">
                                             <img

@@ -3,13 +3,17 @@ package be.effectlife.cslogging.services;
 import be.effectlife.cslogging.models.WebCharacter;
 import be.effectlife.cslogging.processors.*;
 import be.effectlife.cslogging.processors.spells.*;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -107,7 +111,10 @@ public class CharacterService {
         List<String> inputChars = characters.stream().map(c -> c.get("id").toString()).collect(Collectors.toList());
         characterCache.keySet().stream().filter(s -> !inputChars.contains(s)).collect(Collectors.toList()).forEach(characterCache::remove);
         for (Map<String, Object> characterData : characters) {
-            characterCache.put(characterData.get("id").toString(), processCharacterData(sheetType, characterData));
+            Object rcdi = characterData.get("rcdi");
+            if (rcdi!=null && StringUtils.isNotBlank(rcdi.toString())) {
+                characterCache.put(characterData.get("id").toString(), processCharacterData(sheetType, characterData));
+            }
         }
 
     }

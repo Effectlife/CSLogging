@@ -14,21 +14,13 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://app.roll20.net")
+@CrossOrigin(origins = {"https://app.roll20.net",
+        "chrome-extension://ckmjkfapigalfmhlgajfkbjapmaiocmg"})
 public class BackendController {
     private static final Logger LOG = LoggerFactory.getLogger(BackendController.class);
 
-    public static final String HELLO_TEXT = "Hello from Spring Boot Backend!";
-
     @Autowired
     private CharacterService characterService;
-
-    @ResponseBody
-    @GetMapping(path = "/hello")
-    public String sayHello() {
-        LOG.info("GET called on /hello resource");
-        return HELLO_TEXT;
-    }
 
     @ResponseBody
     @PostMapping(path = "/csl")
@@ -55,8 +47,28 @@ public class BackendController {
 
     @ResponseBody
     @GetMapping(path = "/getAllCharacters")
-    public List<WebCharacter> getAllCharacters(){
+    public List<WebCharacter> getAllCharacters() {
         return characterService.getAllCharacters();
     }
 
+    private static final int queueSize = 16;
+    private static final Queue<String> queue = new ArrayDeque<>(queueSize);
+
+    @PostMapping(path = "/debug")
+    public ResponseEntity<?> logData(@RequestBody Map<Object, Object> logLine) {
+        String sanitized = logLine.get("o").toString().replaceAll("\\$", "[dollarSign]");
+        try {
+            Integer.parseInt(sanitized);
+            return ResponseEntity.ok("{}");
+        } catch (NumberFormatException ignored) {
+        }
+        if (!queue.contains(sanitized)) {
+            LOG.info("ROLL20 API CONSOLE -- " + sanitized);
+            if (queue.size() >= queueSize) {
+                queue.poll();
+            }
+            queue.add(sanitized);
+        }
+        return ResponseEntity.ok("{}");
+    }
 }
